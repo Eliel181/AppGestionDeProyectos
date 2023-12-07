@@ -24,3 +24,8 @@ C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDe
 C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\bin\Debug\Model.pdb
 C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\bin\Debug\MySql.Data.xml
 C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\obj\Debug\VIews.Formularios.MensajeBox.resources
+C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\obj\Debug\VIews.Formularios.FormProyectos.resources
+C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\obj\Debug\VIews.Formularios.FormUsuarios.resources
+C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\obj\Debug\VIews.Formularios.FormEmpleados.resources
+C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\obj\Debug\VIews.Formularios.FormTareas.resources
