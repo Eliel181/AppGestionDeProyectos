@@ -137,3 +137,17 @@ DELIMITER ;
 
 /*call spCrearUsuario('43698945','Balero','Sergio', 'Administrador','3884668626','2002-03-23','admin','admin',1,'Diseñador','/img/admin.jpg');*/
 /*call spCrearEmpleado('42567890','Valero','Tomas', 'Empleado','3875461321','2000-03-23','tomi12','tomi12',1,'Tester','/img/emp.jpg');*/
+/****************************************************************************/
+
+/************************ LISTAR PARA TODAS LA TABLAS ************************/
+
+DELIMITER $$
+CREATE PROCEDURE spListarUsuarios
+(
+	IN cTexto VARCHAR(225)
+)
+BEGIN
+	SELECT * FROM usuarios u                
+	WHERE   u.nombre LIKE CONCAT('%', cTexto , '%');
+END $$
+DELIMITER ;

@@ -41,9 +41,13 @@ namespace VIews
 
                     if (validarUsuario)
                     {
+                        Form1 formUsuarios = new Form1();
 
                         MensajeBox m = new MensajeBox("Ingreso", "El Usuario " + UsuarioCache.LoginName);
                         DialogResult dg = m.ShowDialog();
+
+                        formUsuarios.Show();
+                        this.Hide();
                     }
                     else if (validarEmpleado)
                     {

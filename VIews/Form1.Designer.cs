@@ -33,13 +33,14 @@
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.panelDrag = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCerrar = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.gunaGradientPanel1 = new Guna.UI.WinForms.GunaGradientPanel();
             this.panelCentral = new Guna.UI.WinForms.GunaElipsePanel();
             this.panelSuperior = new Guna.UI.WinForms.GunaElipsePanel();
-            this.lblNyADelUsuario = new System.Windows.Forms.Label();
-            this.lblRoleUsuario = new System.Windows.Forms.Label();
-            this.gunaPictureBox1 = new Guna.UI.WinForms.GunaPictureBox();
+            this.lblNyADelUsuarioActual = new System.Windows.Forms.Label();
+            this.lblRoleUsuarioActual = new System.Windows.Forms.Label();
+            this.pbxFotoUsuarioActual = new Guna.UI.WinForms.GunaPictureBox();
             this.lblTituloDeFormularioHijo = new System.Windows.Forms.Label();
             this.panelBotones = new Guna.UI.WinForms.GunaElipsePanel();
             this.btnLogout = new Guna.UI.WinForms.GunaGradientButton();
@@ -47,12 +48,11 @@
             this.btnTareas = new Guna.UI.WinForms.GunaGradientButton();
             this.btnUsuarios = new Guna.UI.WinForms.GunaGradientButton();
             this.btnProyectos = new Guna.UI.WinForms.GunaGradientButton();
-            this.btnCerrar = new Guna.UI.WinForms.GunaGradientButton();
             this.panelDrag.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gunaGradientPanel1.SuspendLayout();
             this.panelSuperior.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoUsuarioActual)).BeginInit();
             this.panelBotones.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +78,34 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(161, 34);
             this.panel1.TabIndex = 0;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.AnimationHoverSpeed = 0.07F;
+            this.btnCerrar.AnimationSpeed = 0.03F;
+            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.BaseColor1 = System.Drawing.Color.Crimson;
+            this.btnCerrar.BaseColor2 = System.Drawing.Color.Red;
+            this.btnCerrar.BorderColor = System.Drawing.Color.Black;
+            this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCerrar.FocusedColor = System.Drawing.Color.Empty;
+            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
+            this.btnCerrar.Image = global::VIews.Properties.Resources.cerrarX;
+            this.btnCerrar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnCerrar.Location = new System.Drawing.Point(113, 3);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.OnHoverBaseColor1 = System.Drawing.Color.Gold;
+            this.btnCerrar.OnHoverBaseColor2 = System.Drawing.Color.Yellow;
+            this.btnCerrar.OnHoverBorderColor = System.Drawing.Color.Red;
+            this.btnCerrar.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnCerrar.OnHoverImage = null;
+            this.btnCerrar.OnPressedColor = System.Drawing.Color.Black;
+            this.btnCerrar.Radius = 10;
+            this.btnCerrar.Size = new System.Drawing.Size(36, 31);
+            this.btnCerrar.TabIndex = 2;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // gunaDragControl1
             // 
@@ -115,9 +143,9 @@
             // 
             this.panelSuperior.BackColor = System.Drawing.Color.Transparent;
             this.panelSuperior.BaseColor = System.Drawing.Color.White;
-            this.panelSuperior.Controls.Add(this.lblNyADelUsuario);
-            this.panelSuperior.Controls.Add(this.lblRoleUsuario);
-            this.panelSuperior.Controls.Add(this.gunaPictureBox1);
+            this.panelSuperior.Controls.Add(this.lblNyADelUsuarioActual);
+            this.panelSuperior.Controls.Add(this.lblRoleUsuarioActual);
+            this.panelSuperior.Controls.Add(this.pbxFotoUsuarioActual);
             this.panelSuperior.Controls.Add(this.lblTituloDeFormularioHijo);
             this.panelSuperior.Location = new System.Drawing.Point(64, 6);
             this.panelSuperior.Name = "panelSuperior";
@@ -125,38 +153,38 @@
             this.panelSuperior.Size = new System.Drawing.Size(924, 71);
             this.panelSuperior.TabIndex = 3;
             // 
-            // lblNyADelUsuario
+            // lblNyADelUsuarioActual
             // 
-            this.lblNyADelUsuario.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNyADelUsuario.Location = new System.Drawing.Point(544, 34);
-            this.lblNyADelUsuario.Name = "lblNyADelUsuario";
-            this.lblNyADelUsuario.Size = new System.Drawing.Size(258, 21);
-            this.lblNyADelUsuario.TabIndex = 3;
-            this.lblNyADelUsuario.Text = "NyA";
-            this.lblNyADelUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblNyADelUsuarioActual.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNyADelUsuarioActual.Location = new System.Drawing.Point(544, 34);
+            this.lblNyADelUsuarioActual.Name = "lblNyADelUsuarioActual";
+            this.lblNyADelUsuarioActual.Size = new System.Drawing.Size(258, 21);
+            this.lblNyADelUsuarioActual.TabIndex = 3;
+            this.lblNyADelUsuarioActual.Text = "NyA";
+            this.lblNyADelUsuarioActual.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblRoleUsuario
+            // lblRoleUsuarioActual
             // 
-            this.lblRoleUsuario.AutoSize = true;
-            this.lblRoleUsuario.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRoleUsuario.Location = new System.Drawing.Point(758, 9);
-            this.lblRoleUsuario.Name = "lblRoleUsuario";
-            this.lblRoleUsuario.Size = new System.Drawing.Size(44, 21);
-            this.lblRoleUsuario.TabIndex = 2;
-            this.lblRoleUsuario.Text = "Role";
+            this.lblRoleUsuarioActual.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoleUsuarioActual.Location = new System.Drawing.Point(608, 9);
+            this.lblRoleUsuarioActual.Name = "lblRoleUsuarioActual";
+            this.lblRoleUsuarioActual.Size = new System.Drawing.Size(194, 21);
+            this.lblRoleUsuarioActual.TabIndex = 2;
+            this.lblRoleUsuarioActual.Text = "Role";
+            this.lblRoleUsuarioActual.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // gunaPictureBox1
+            // pbxFotoUsuarioActual
             // 
-            this.gunaPictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaPictureBox1.BaseColor = System.Drawing.Color.White;
-            this.gunaPictureBox1.Image = global::VIews.Properties.Resources._default;
-            this.gunaPictureBox1.Location = new System.Drawing.Point(825, 0);
-            this.gunaPictureBox1.Name = "gunaPictureBox1";
-            this.gunaPictureBox1.Radius = 15;
-            this.gunaPictureBox1.Size = new System.Drawing.Size(99, 71);
-            this.gunaPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.gunaPictureBox1.TabIndex = 1;
-            this.gunaPictureBox1.TabStop = false;
+            this.pbxFotoUsuarioActual.BackColor = System.Drawing.Color.Transparent;
+            this.pbxFotoUsuarioActual.BaseColor = System.Drawing.Color.White;
+            this.pbxFotoUsuarioActual.Image = global::VIews.Properties.Resources._default;
+            this.pbxFotoUsuarioActual.Location = new System.Drawing.Point(825, 0);
+            this.pbxFotoUsuarioActual.Name = "pbxFotoUsuarioActual";
+            this.pbxFotoUsuarioActual.Radius = 10;
+            this.pbxFotoUsuarioActual.Size = new System.Drawing.Size(99, 71);
+            this.pbxFotoUsuarioActual.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxFotoUsuarioActual.TabIndex = 1;
+            this.pbxFotoUsuarioActual.TabStop = false;
             // 
             // lblTituloDeFormularioHijo
             // 
@@ -322,34 +350,6 @@
             this.btnProyectos.TabIndex = 3;
             this.btnProyectos.Click += new System.EventHandler(this.btnProyectos_Click);
             // 
-            // btnCerrar
-            // 
-            this.btnCerrar.AnimationHoverSpeed = 0.07F;
-            this.btnCerrar.AnimationSpeed = 0.03F;
-            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCerrar.BaseColor1 = System.Drawing.Color.Crimson;
-            this.btnCerrar.BaseColor2 = System.Drawing.Color.Red;
-            this.btnCerrar.BorderColor = System.Drawing.Color.Black;
-            this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnCerrar.FocusedColor = System.Drawing.Color.Empty;
-            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCerrar.ForeColor = System.Drawing.Color.White;
-            this.btnCerrar.Image = global::VIews.Properties.Resources.cerrarX;
-            this.btnCerrar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnCerrar.Location = new System.Drawing.Point(113, 3);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.OnHoverBaseColor1 = System.Drawing.Color.Gold;
-            this.btnCerrar.OnHoverBaseColor2 = System.Drawing.Color.Yellow;
-            this.btnCerrar.OnHoverBorderColor = System.Drawing.Color.Red;
-            this.btnCerrar.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnCerrar.OnHoverImage = null;
-            this.btnCerrar.OnPressedColor = System.Drawing.Color.Black;
-            this.btnCerrar.Radius = 10;
-            this.btnCerrar.Size = new System.Drawing.Size(36, 31);
-            this.btnCerrar.TabIndex = 2;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -367,7 +367,7 @@
             this.gunaGradientPanel1.ResumeLayout(false);
             this.panelSuperior.ResumeLayout(false);
             this.panelSuperior.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gunaPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxFotoUsuarioActual)).EndInit();
             this.panelBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -390,9 +390,9 @@
         private Guna.UI.WinForms.GunaGradientButton btnUsuarios;
         private Guna.UI.WinForms.GunaGradientButton btnProyectos;
         private System.Windows.Forms.Label lblTituloDeFormularioHijo;
-        private Guna.UI.WinForms.GunaPictureBox gunaPictureBox1;
-        private System.Windows.Forms.Label lblNyADelUsuario;
-        private System.Windows.Forms.Label lblRoleUsuario;
+        private Guna.UI.WinForms.GunaPictureBox pbxFotoUsuarioActual;
+        private System.Windows.Forms.Label lblNyADelUsuarioActual;
+        private System.Windows.Forms.Label lblRoleUsuarioActual;
     }
 }
 

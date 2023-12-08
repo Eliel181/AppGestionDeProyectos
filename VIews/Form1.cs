@@ -1,9 +1,11 @@
-﻿using Guna.UI.WinForms;
+﻿using Entities;
+using Guna.UI.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.Text;
@@ -21,11 +23,27 @@ namespace VIews
         public Form1()
         {
             InitializeComponent();
+            cargarDatosDeUsuarioActual();//cargo los datos del usuario logueado
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cargarDatosDeUsuarioActual()
+        {
+            this.lblRoleUsuarioActual.Text = UsuarioCache.Role;
+            this.lblNyADelUsuarioActual.Text = UsuarioCache.Nombre +" " +UsuarioCache.Apellido;
+            this.pbxFotoUsuarioActual.Image = byteToImage(UsuarioCache.Foto);
+        }
+
+        //convertir byte[] a Imagen
+        private Image byteToImage(byte[] imageBytes)
+        {
+            MemoryStream ms = new MemoryStream(imageBytes);//automaticamente obtiene la inf
+            Image foto = Image.FromStream(ms);
+            return foto;
         }
 
         public void AbrirFormulario(Form formularioHijo)
