@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.pbxFoto = new Guna.UI.WinForms.GunaPictureBox();
@@ -56,27 +57,26 @@
             this.dtpFechaNacimiento = new Guna.UI.WinForms.GunaDateTimePicker();
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
-            this.txtIdUsuario = new Guna.UI.WinForms.GunaTextBox();
-            this.btnGuardar = new Guna.UI.WinForms.GunaGradientButton();
-            this.btnEditar = new Guna.UI.WinForms.GunaGradientButton();
             this.btnNuevo = new Guna.UI.WinForms.GunaGradientButton();
-            this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
+            this.btnEditar = new Guna.UI.WinForms.GunaGradientButton();
+            this.btnGuardar = new Guna.UI.WinForms.GunaGradientButton();
+            this.txtIdUsuario = new Guna.UI.WinForms.GunaTextBox();
             this.dgvUsuarios = new Guna.UI.WinForms.GunaDataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DNI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FecNac = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LoginName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Habilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Foto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.opEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pbxFoto)).BeginInit();
             this.gunaGroupBox1.SuspendLayout();
-            this.gunaGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,6 +86,7 @@
             // 
             // pbxFoto
             // 
+            this.pbxFoto.BackColor = System.Drawing.Color.Transparent;
             this.pbxFoto.BaseColor = System.Drawing.Color.White;
             this.pbxFoto.Image = global::VIews.Properties.Resources._default;
             this.pbxFoto.Location = new System.Drawing.Point(35, 37);
@@ -100,6 +101,7 @@
             // 
             this.btnAgregarFoto.AnimationHoverSpeed = 0.07F;
             this.btnAgregarFoto.AnimationSpeed = 0.03F;
+            this.btnAgregarFoto.BackColor = System.Drawing.Color.Transparent;
             this.btnAgregarFoto.BaseColor1 = System.Drawing.Color.DodgerBlue;
             this.btnAgregarFoto.BaseColor2 = System.Drawing.Color.RoyalBlue;
             this.btnAgregarFoto.BorderColor = System.Drawing.Color.Black;
@@ -137,6 +139,7 @@
             // 
             // txtDni
             // 
+            this.txtDni.BackColor = System.Drawing.Color.Transparent;
             this.txtDni.BaseColor = System.Drawing.Color.White;
             this.txtDni.BorderColor = System.Drawing.Color.MediumSeaGreen;
             this.txtDni.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -144,6 +147,7 @@
             this.txtDni.FocusedBorderColor = System.Drawing.Color.Indigo;
             this.txtDni.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtDni.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtDni.ForeColor = System.Drawing.Color.Black;
             this.txtDni.Location = new System.Drawing.Point(267, 83);
             this.txtDni.Name = "txtDni";
             this.txtDni.PasswordChar = '\0';
@@ -164,6 +168,7 @@
             // 
             // txtApellido
             // 
+            this.txtApellido.BackColor = System.Drawing.Color.Transparent;
             this.txtApellido.BaseColor = System.Drawing.Color.White;
             this.txtApellido.BorderColor = System.Drawing.Color.MediumSeaGreen;
             this.txtApellido.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -171,6 +176,7 @@
             this.txtApellido.FocusedBorderColor = System.Drawing.Color.Indigo;
             this.txtApellido.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtApellido.ForeColor = System.Drawing.Color.Black;
             this.txtApellido.Location = new System.Drawing.Point(267, 124);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.PasswordChar = '\0';
@@ -191,6 +197,7 @@
             // 
             // txtNombre
             // 
+            this.txtNombre.BackColor = System.Drawing.Color.Transparent;
             this.txtNombre.BaseColor = System.Drawing.Color.White;
             this.txtNombre.BorderColor = System.Drawing.Color.MediumSeaGreen;
             this.txtNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -198,6 +205,7 @@
             this.txtNombre.FocusedBorderColor = System.Drawing.Color.Indigo;
             this.txtNombre.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtNombre.ForeColor = System.Drawing.Color.Black;
             this.txtNombre.Location = new System.Drawing.Point(267, 170);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.PasswordChar = '\0';
@@ -218,6 +226,7 @@
             // 
             // txtTelefono
             // 
+            this.txtTelefono.BackColor = System.Drawing.Color.Transparent;
             this.txtTelefono.BaseColor = System.Drawing.Color.White;
             this.txtTelefono.BorderColor = System.Drawing.Color.MediumSeaGreen;
             this.txtTelefono.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -225,6 +234,7 @@
             this.txtTelefono.FocusedBorderColor = System.Drawing.Color.Indigo;
             this.txtTelefono.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtTelefono.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtTelefono.ForeColor = System.Drawing.Color.Black;
             this.txtTelefono.Location = new System.Drawing.Point(490, 40);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.PasswordChar = '\0';
@@ -245,6 +255,7 @@
             // 
             // txtLoginName
             // 
+            this.txtLoginName.BackColor = System.Drawing.Color.Transparent;
             this.txtLoginName.BaseColor = System.Drawing.Color.White;
             this.txtLoginName.BorderColor = System.Drawing.Color.MediumSeaGreen;
             this.txtLoginName.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -252,6 +263,7 @@
             this.txtLoginName.FocusedBorderColor = System.Drawing.Color.Indigo;
             this.txtLoginName.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtLoginName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtLoginName.ForeColor = System.Drawing.Color.Black;
             this.txtLoginName.Location = new System.Drawing.Point(490, 83);
             this.txtLoginName.Name = "txtLoginName";
             this.txtLoginName.PasswordChar = '\0';
@@ -272,6 +284,7 @@
             // 
             // txtPassword
             // 
+            this.txtPassword.BackColor = System.Drawing.Color.Transparent;
             this.txtPassword.BaseColor = System.Drawing.Color.White;
             this.txtPassword.BorderColor = System.Drawing.Color.MediumSeaGreen;
             this.txtPassword.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -279,6 +292,7 @@
             this.txtPassword.FocusedBorderColor = System.Drawing.Color.Indigo;
             this.txtPassword.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.Location = new System.Drawing.Point(490, 127);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '\0';
@@ -310,6 +324,7 @@
             this.chkEstado.Size = new System.Drawing.Size(80, 21);
             this.chkEstado.TabIndex = 16;
             this.chkEstado.Text = "inactivo";
+            this.chkEstado.CheckedChanged += new System.EventHandler(this.chkEstado_CheckedChanged);
             // 
             // cmbRole
             // 
@@ -380,6 +395,7 @@
             // 
             // dtpFechaNacimiento
             // 
+            this.dtpFechaNacimiento.BackColor = System.Drawing.Color.Transparent;
             this.dtpFechaNacimiento.BaseColor = System.Drawing.Color.White;
             this.dtpFechaNacimiento.BorderColor = System.Drawing.Color.MediumSeaGreen;
             this.dtpFechaNacimiento.CustomFormat = null;
@@ -456,26 +472,69 @@
             this.gunaGroupBox1.Text = "Datos de Usuario";
             this.gunaGroupBox1.TextLocation = new System.Drawing.Point(320, 3);
             // 
-            // txtIdUsuario
+            // btnNuevo
             // 
-            this.txtIdUsuario.BaseColor = System.Drawing.Color.White;
-            this.txtIdUsuario.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.txtIdUsuario.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtIdUsuario.FocusedBaseColor = System.Drawing.Color.White;
-            this.txtIdUsuario.FocusedBorderColor = System.Drawing.Color.Indigo;
-            this.txtIdUsuario.FocusedForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtIdUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtIdUsuario.Location = new System.Drawing.Point(267, 37);
-            this.txtIdUsuario.Name = "txtIdUsuario";
-            this.txtIdUsuario.PasswordChar = '\0';
-            this.txtIdUsuario.Radius = 5;
-            this.txtIdUsuario.Size = new System.Drawing.Size(107, 26);
-            this.txtIdUsuario.TabIndex = 0;
+            this.btnNuevo.AnimationHoverSpeed = 0.07F;
+            this.btnNuevo.AnimationSpeed = 0.03F;
+            this.btnNuevo.BackColor = System.Drawing.Color.Transparent;
+            this.btnNuevo.BaseColor1 = System.Drawing.Color.HotPink;
+            this.btnNuevo.BaseColor2 = System.Drawing.Color.Plum;
+            this.btnNuevo.BorderColor = System.Drawing.Color.Black;
+            this.btnNuevo.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnNuevo.FocusedColor = System.Drawing.Color.Empty;
+            this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.ForeColor = System.Drawing.Color.Black;
+            this.btnNuevo.Image = null;
+            this.btnNuevo.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnNuevo.Location = new System.Drawing.Point(729, 170);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.OnHoverBaseColor1 = System.Drawing.Color.DarkSlateGray;
+            this.btnNuevo.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
+            this.btnNuevo.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnNuevo.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnNuevo.OnHoverImage = null;
+            this.btnNuevo.OnPressedColor = System.Drawing.Color.Black;
+            this.btnNuevo.Radius = 7;
+            this.btnNuevo.Size = new System.Drawing.Size(103, 28);
+            this.btnNuevo.TabIndex = 25;
+            this.btnNuevo.Text = "Nuevo";
+            this.btnNuevo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.AnimationHoverSpeed = 0.07F;
+            this.btnEditar.AnimationSpeed = 0.03F;
+            this.btnEditar.BackColor = System.Drawing.Color.Transparent;
+            this.btnEditar.BaseColor1 = System.Drawing.Color.DarkOrange;
+            this.btnEditar.BaseColor2 = System.Drawing.Color.Gold;
+            this.btnEditar.BorderColor = System.Drawing.Color.Black;
+            this.btnEditar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnEditar.FocusedColor = System.Drawing.Color.Empty;
+            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.Black;
+            this.btnEditar.Image = null;
+            this.btnEditar.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnEditar.Location = new System.Drawing.Point(631, 170);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.OnHoverBaseColor1 = System.Drawing.Color.DarkSlateGray;
+            this.btnEditar.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
+            this.btnEditar.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnEditar.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnEditar.OnHoverImage = null;
+            this.btnEditar.OnPressedColor = System.Drawing.Color.Black;
+            this.btnEditar.Radius = 7;
+            this.btnEditar.Size = new System.Drawing.Size(92, 28);
+            this.btnEditar.TabIndex = 24;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnGuardar
             // 
             this.btnGuardar.AnimationHoverSpeed = 0.07F;
             this.btnGuardar.AnimationSpeed = 0.03F;
+            this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
             this.btnGuardar.BaseColor1 = System.Drawing.Color.MediumSeaGreen;
             this.btnGuardar.BaseColor2 = System.Drawing.Color.LimeGreen;
             this.btnGuardar.BorderColor = System.Drawing.Color.Black;
@@ -500,76 +559,23 @@
             this.btnGuardar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // btnEditar
+            // txtIdUsuario
             // 
-            this.btnEditar.AnimationHoverSpeed = 0.07F;
-            this.btnEditar.AnimationSpeed = 0.03F;
-            this.btnEditar.BaseColor1 = System.Drawing.Color.DarkOrange;
-            this.btnEditar.BaseColor2 = System.Drawing.Color.Gold;
-            this.btnEditar.BorderColor = System.Drawing.Color.Black;
-            this.btnEditar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnEditar.FocusedColor = System.Drawing.Color.Empty;
-            this.btnEditar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.Color.Black;
-            this.btnEditar.Image = null;
-            this.btnEditar.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnEditar.Location = new System.Drawing.Point(631, 170);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.OnHoverBaseColor1 = System.Drawing.Color.DarkSlateGray;
-            this.btnEditar.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
-            this.btnEditar.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnEditar.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnEditar.OnHoverImage = null;
-            this.btnEditar.OnPressedColor = System.Drawing.Color.Black;
-            this.btnEditar.Radius = 7;
-            this.btnEditar.Size = new System.Drawing.Size(92, 28);
-            this.btnEditar.TabIndex = 24;
-            this.btnEditar.Text = "Editar";
-            this.btnEditar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.AnimationHoverSpeed = 0.07F;
-            this.btnNuevo.AnimationSpeed = 0.03F;
-            this.btnNuevo.BaseColor1 = System.Drawing.Color.HotPink;
-            this.btnNuevo.BaseColor2 = System.Drawing.Color.Plum;
-            this.btnNuevo.BorderColor = System.Drawing.Color.Black;
-            this.btnNuevo.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnNuevo.FocusedColor = System.Drawing.Color.Empty;
-            this.btnNuevo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.ForeColor = System.Drawing.Color.Black;
-            this.btnNuevo.Image = null;
-            this.btnNuevo.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnNuevo.Location = new System.Drawing.Point(729, 170);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.OnHoverBaseColor1 = System.Drawing.Color.DarkSlateGray;
-            this.btnNuevo.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
-            this.btnNuevo.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnNuevo.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnNuevo.OnHoverImage = null;
-            this.btnNuevo.OnPressedColor = System.Drawing.Color.Black;
-            this.btnNuevo.Radius = 7;
-            this.btnNuevo.Size = new System.Drawing.Size(103, 28);
-            this.btnNuevo.TabIndex = 25;
-            this.btnNuevo.Text = "Nuevo";
-            this.btnNuevo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // gunaGroupBox2
-            // 
-            this.gunaGroupBox2.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
-            this.gunaGroupBox2.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox2.Controls.Add(this.dgvUsuarios);
-            this.gunaGroupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gunaGroupBox2.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox2.ForeColor = System.Drawing.Color.White;
-            this.gunaGroupBox2.LineColor = System.Drawing.Color.MediumSeaGreen;
-            this.gunaGroupBox2.Location = new System.Drawing.Point(0, 220);
-            this.gunaGroupBox2.Name = "gunaGroupBox2";
-            this.gunaGroupBox2.Size = new System.Drawing.Size(850, 230);
-            this.gunaGroupBox2.TabIndex = 2;
-            this.gunaGroupBox2.Text = "Lista de Usuario";
-            this.gunaGroupBox2.TextLocation = new System.Drawing.Point(320, 3);
+            this.txtIdUsuario.BackColor = System.Drawing.Color.Transparent;
+            this.txtIdUsuario.BaseColor = System.Drawing.Color.White;
+            this.txtIdUsuario.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.txtIdUsuario.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtIdUsuario.FocusedBaseColor = System.Drawing.Color.White;
+            this.txtIdUsuario.FocusedBorderColor = System.Drawing.Color.Indigo;
+            this.txtIdUsuario.FocusedForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtIdUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtIdUsuario.ForeColor = System.Drawing.Color.Black;
+            this.txtIdUsuario.Location = new System.Drawing.Point(267, 37);
+            this.txtIdUsuario.Name = "txtIdUsuario";
+            this.txtIdUsuario.PasswordChar = '\0';
+            this.txtIdUsuario.Radius = 5;
+            this.txtIdUsuario.Size = new System.Drawing.Size(107, 26);
+            this.txtIdUsuario.TabIndex = 0;
             // 
             // dgvUsuarios
             // 
@@ -583,44 +589,45 @@
             this.dgvUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.MediumSeaGreen;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvUsuarios.ColumnHeadersHeight = 22;
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.DNI,
+            this.Id,
+            this.Dni,
             this.Apellido,
             this.Nombre,
             this.Role,
             this.Telefono,
             this.FecNac,
             this.LoginName,
-            this.password,
+            this.Password,
             this.Estado,
             this.Habilidad,
-            this.Foto});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Foto,
+            this.opEliminar});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUsuarios.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvUsuarios.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvUsuarios.EnableHeadersVisualStyles = false;
             this.dgvUsuarios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvUsuarios.Location = new System.Drawing.Point(0, 32);
+            this.dgvUsuarios.Location = new System.Drawing.Point(0, 236);
             this.dgvUsuarios.Name = "dgvUsuarios";
             this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvUsuarios.Size = new System.Drawing.Size(850, 198);
+            this.dgvUsuarios.Size = new System.Drawing.Size(850, 214);
             this.dgvUsuarios.TabIndex = 1;
             this.dgvUsuarios.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.dgvUsuarios.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -632,39 +639,38 @@
             this.dgvUsuarios.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvUsuarios.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.dgvUsuarios.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvUsuarios.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvUsuarios.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.dgvUsuarios.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvUsuarios.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvUsuarios.ThemeStyle.HeaderStyle.Height = 22;
+            this.dgvUsuarios.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.ThemeStyle.HeaderStyle.Height = 21;
             this.dgvUsuarios.ThemeStyle.ReadOnly = true;
             this.dgvUsuarios.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvUsuarios.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvUsuarios.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvUsuarios.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvUsuarios.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.dgvUsuarios.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvUsuarios.ThemeStyle.RowsStyle.Height = 22;
             this.dgvUsuarios.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvUsuarios.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
+            this.dgvUsuarios.DoubleClick += new System.EventHandler(this.dgvUsuarios_DoubleClick);
             // 
-            // ID
+            // Id
             // 
-            this.ID.DataPropertyName = "IdUsuario";
-            this.ID.FillWeight = 30F;
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
+            this.Id.DataPropertyName = "IdUsuario";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
             // 
-            // DNI
+            // Dni
             // 
-            this.DNI.DataPropertyName = "Dni";
-            this.DNI.FillWeight = 42.69758F;
-            this.DNI.HeaderText = "DNI";
-            this.DNI.Name = "DNI";
-            this.DNI.ReadOnly = true;
+            this.Dni.DataPropertyName = "Dni";
+            this.Dni.HeaderText = "Dni";
+            this.Dni.Name = "Dni";
+            this.Dni.ReadOnly = true;
             // 
             // Apellido
             // 
             this.Apellido.DataPropertyName = "Apellido";
-            this.Apellido.FillWeight = 42.69758F;
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
             this.Apellido.ReadOnly = true;
@@ -672,7 +678,6 @@
             // Nombre
             // 
             this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.FillWeight = 42.69758F;
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
@@ -680,7 +685,6 @@
             // Role
             // 
             this.Role.DataPropertyName = "Role";
-            this.Role.FillWeight = 42.69758F;
             this.Role.HeaderText = "Role";
             this.Role.Name = "Role";
             this.Role.ReadOnly = true;
@@ -688,47 +692,42 @@
             // Telefono
             // 
             this.Telefono.DataPropertyName = "Telefono";
-            this.Telefono.FillWeight = 42.69758F;
-            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.HeaderText = "Tel.";
             this.Telefono.Name = "Telefono";
             this.Telefono.ReadOnly = true;
             // 
             // FecNac
             // 
             this.FecNac.DataPropertyName = "FechaNacimiento";
-            this.FecNac.FillWeight = 42.69758F;
-            this.FecNac.HeaderText = "Fec.Nac.";
+            this.FecNac.HeaderText = "FecNac";
             this.FecNac.Name = "FecNac";
             this.FecNac.ReadOnly = true;
             // 
             // LoginName
             // 
             this.LoginName.DataPropertyName = "LoginName";
-            this.LoginName.FillWeight = 42.69758F;
             this.LoginName.HeaderText = "LoginName";
             this.LoginName.Name = "LoginName";
             this.LoginName.ReadOnly = true;
             // 
-            // password
+            // Password
             // 
-            this.password.DataPropertyName = "Password";
-            this.password.FillWeight = 42.69758F;
-            this.password.HeaderText = "Password";
-            this.password.Name = "password";
-            this.password.ReadOnly = true;
+            this.Password.DataPropertyName = "Password";
+            this.Password.HeaderText = "Password";
+            this.Password.Name = "Password";
+            this.Password.ReadOnly = true;
+            this.Password.Visible = false;
             // 
             // Estado
             // 
             this.Estado.DataPropertyName = "Estado";
-            this.Estado.FillWeight = 42.69758F;
-            this.Estado.HeaderText = "Estado";
+            this.Estado.HeaderText = "Est";
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
             // 
             // Habilidad
             // 
             this.Habilidad.DataPropertyName = "Habilidad";
-            this.Habilidad.FillWeight = 42.69758F;
             this.Habilidad.HeaderText = "Habilidad";
             this.Habilidad.Name = "Habilidad";
             this.Habilidad.ReadOnly = true;
@@ -741,13 +740,26 @@
             this.Foto.ReadOnly = true;
             this.Foto.Visible = false;
             // 
+            // opEliminar
+            // 
+            this.opEliminar.DataPropertyName = "op";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Crimson;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Crimson;
+            this.opEliminar.DefaultCellStyle = dataGridViewCellStyle3;
+            this.opEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.opEliminar.HeaderText = "Op";
+            this.opEliminar.Name = "opEliminar";
+            this.opEliminar.ReadOnly = true;
+            // 
             // FormUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(850, 450);
-            this.Controls.Add(this.gunaGroupBox2);
+            this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.gunaGroupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormUsuarios";
@@ -755,7 +767,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxFoto)).EndInit();
             this.gunaGroupBox1.ResumeLayout(false);
             this.gunaGroupBox1.PerformLayout();
-            this.gunaGroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
 
@@ -791,19 +802,19 @@
         private Guna.UI.WinForms.GunaGradientButton btnNuevo;
         private Guna.UI.WinForms.GunaGradientButton btnEditar;
         private Guna.UI.WinForms.GunaGradientButton btnGuardar;
-        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox2;
         private Guna.UI.WinForms.GunaDataGridView dgvUsuarios;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DNI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Role;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
         private System.Windows.Forms.DataGridViewTextBoxColumn FecNac;
         private System.Windows.Forms.DataGridViewTextBoxColumn LoginName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Habilidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Foto;
+        private System.Windows.Forms.DataGridViewButtonColumn opEliminar;
     }
 }

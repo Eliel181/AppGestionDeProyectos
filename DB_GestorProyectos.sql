@@ -142,6 +142,34 @@ DELIMITER ;
 /************************ LISTAR PARA TODAS LA TABLAS ************************/
 
 DELIMITER $$
+CREATE PROCEDURE spListarUsuariosOpcion(
+	IN cTexto VARCHAR(50)
+)
+BEGIN
+	SELECT u.IdUsuario,
+		   u.Dni, 
+           u.Apellido,
+           u.Nombre,
+           u.Role,
+           u.Telefono,
+           u.FechaNacimiento,
+		   u.LoginName,
+           u.Password,
+           u.Estado,
+           u.Habilidad,
+           u.Foto,
+           "Eliminar" AS op
+           
+FROM usuarios u
+
+WHERE u.Nombre LIKE CONCAT('%',cTexto,'%');
+
+END $$
+DELIMITER ;
+
+
+
+DELIMITER $$
 CREATE PROCEDURE spListarUsuarios
 (
 	IN cTexto VARCHAR(225)
@@ -149,5 +177,49 @@ CREATE PROCEDURE spListarUsuarios
 BEGIN
 	SELECT * FROM usuarios u                
 	WHERE   u.nombre LIKE CONCAT('%', cTexto , '%');
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE spEliminarUsuario
+(
+    IN pIdUsuario INT
+)
+BEGIN
+    DELETE FROM usuarios 
+    WHERE IdUsuario=pIdUsuario; 
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE spActualizarUsuario
+(
+	IN pIdUsuario INT,
+	IN pDni VARCHAR(50),
+    IN pNombre VARCHAR(100),
+	IN pApellido VARCHAR(100),
+    IN pRole VARCHAR(100), 
+    IN pTelefono VARCHAR(100),
+    IN pFechaNacimiento DATE,
+    IN pLoginName VARCHAR(100),
+    IN pPassword VARCHAR(100), 
+    IN pEstado bit(1),
+    IN pHabilidad VARCHAR(50),   
+    IN pFoto longblob
+)
+BEGIN
+    UPDATE usuarios SET 
+    Dni=pDni,
+    Nombre=pNombre,
+    Apellido=pApellido,
+    Role=pRole,
+    Telefono=pTelefono,
+    FechaNacimiento=pFechaNacimiento,
+    LoginName=pLoginName,
+    Password=pPassword,
+    Estado = pEstado,
+    Habilidad=pHabilidad,
+    Foto=pFoto
+    WHERE IdUsuario = pIdUsuario;
 END $$
 DELIMITER ;

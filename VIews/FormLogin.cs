@@ -51,8 +51,12 @@ namespace VIews
                     }
                     else if (validarEmpleado)
                     {
+                        FormParaEmpleado formParaEmpleado = new FormParaEmpleado();
                         MensajeBox m = new MensajeBox("Ingreso", "El empleado " + EmpleadoCache.LoginName);
                         DialogResult dg = m.ShowDialog();
+
+                        formParaEmpleado.Show();
+                        this.Hide();
                     }
                     else
                     {

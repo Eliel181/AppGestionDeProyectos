@@ -27,5 +27,16 @@ namespace Model
         {
             return usuarioDao.crearUsuario(oU);
         }
+
+        public string EliminarUsuario(int idUsuario)
+        {
+            string Rpta = usuarioDao.eliminarUsuario(idUsuario);
+            return Rpta;
+        }
+
+        public string EditarUsuario(Usuario oUs)
+        {
+            return usuarioDao.editarUsuario(oUs);
+        }
     }
 }

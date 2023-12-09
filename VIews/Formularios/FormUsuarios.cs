@@ -80,8 +80,9 @@ namespace VIews.Formularios
             this.dtpFechaNacimiento.Text = "";
             this.cmbRole.SelectedIndex = -1;
             this.cmbHabilidad.SelectedIndex = -1;
+            this.pbxFoto.Image = null;
             //this.btnGuardar.Enabled = true;
-           // this.btnEditar.Enabled = false;
+            // this.btnEditar.Enabled = false;
             //this.btnEliminar.Enabled = false;
             //this.chkTutorCargado.Checked = false;
         }
@@ -126,6 +127,146 @@ namespace VIews.Formularios
                 else
                 {
                     MessageBox.Show("Debe Ingresar Datos");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.StackTrace);
+            }
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.txtIdUsuario.Text != "")
+                {
+                    string Rpta = "";
+                    Usuario us = new Usuario();
+                    us.IdUsuario = int.Parse(this.txtIdUsuario.Text);
+                    us.Dni = this.txtDni.Text;
+                    us.Nombre = this.txtNombre.Text;
+                    us.Apellido = this.txtApellido.Text;
+                    us.Role = this.cmbRole.Text;
+                    us.Telefono = this.txtTelefono.Text;
+                    us.FechaNacimiento = this.dtpFechaNacimiento.Value;
+                    us.LoginName = this.txtLoginName.Text;
+                    us.Password = this.txtPassword.Text;
+                    us.Estado = this.chkEstado.Checked;
+                    us.Habilidad = this.cmbHabilidad.Text;
+                    us.Foto = imageToBytes(this.pbxFoto);
+
+                    Rpta = usuarioController.EditarUsuario(us);
+
+                    if (Rpta.Equals("OK"))
+                    {
+                        MensajeBox m = new MensajeBox("Actualizo", "El Usuario: " + us.Nombre + " " + us.Apellido);
+                        DialogResult dg = m.ShowDialog();
+
+                        //cargarLista();
+                        limpiarCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Rpta,
+                                        "Aviso del Sistema",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                    }
+                    cargarLista();
+
+                }
+                else
+                {
+                    MessageBox.Show("Debe Seleccionar Fotografia", "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was a problem saving the file." +
+                    "Check the file permissions.");
+            }
+        }
+
+        private void btnNuevo_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
+        }
+
+        private void dgvUsuarios_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.dgvUsuarios.CurrentRow != null)
+                {
+                    this.txtIdUsuario.Text = this.dgvUsuarios.CurrentRow.Cells[0].Value.ToString();
+                    this.txtDni.Text = this.dgvUsuarios.CurrentRow.Cells[1].Value.ToString();   
+                    this.txtApellido.Text = this.dgvUsuarios.CurrentRow.Cells[2].Value.ToString();
+                    this.txtNombre.Text = this.dgvUsuarios.CurrentRow.Cells[3].Value.ToString();
+                    this.cmbRole.Text = this.dgvUsuarios.CurrentRow.Cells[4].Value.ToString();
+                    this.txtTelefono.Text = this.dgvUsuarios.CurrentRow.Cells[5].Value.ToString();
+                    this.dtpFechaNacimiento.Value = (DateTime)this.dgvUsuarios.CurrentRow.Cells[6].Value;
+                    this.txtLoginName.Text = this.dgvUsuarios.CurrentRow.Cells[7].Value.ToString();
+                    this.txtPassword.Text = this.dgvUsuarios.CurrentRow.Cells[8].Value.ToString(); 
+                    this.chkEstado.Checked = this.dgvUsuarios.CurrentRow.Cells[9].Value.ToString() == "1" ? true : false;
+                    this.cmbHabilidad.Text = this.dgvUsuarios.CurrentRow.Cells[10].Value.ToString();
+                    this.pbxFoto.Image = byteToImage((byte[])(this.dgvUsuarios.CurrentRow.Cells[11].Value));
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.StackTrace);
+            }
+        }
+
+        private void chkEstado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.chkEstado.Checked == true)
+            {
+                this.chkEstado.Text = "Activo";
+                this.chkEstado.ForeColor = Color.Green;
+            }
+            else
+            {
+                this.chkEstado.Text = "Inactivo";
+                this.chkEstado.ForeColor = Color.Red;
+            }
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //caundo haga click en una columna que no sea la de opEliminar
+                if (e.RowIndex < 0 || e.ColumnIndex != dgvUsuarios.Columns["opEliminar"].Index)
+                {
+                    return;
+                }
+                else
+                {
+                    var idArticulo = int.Parse(this.dgvUsuarios.CurrentRow.Cells[0].Value.ToString());
+                    DialogResult res = MessageBox.Show("Estas Seguro de querer Eliminar", "Confirmar Eliminar", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    String Rpta = "";
+
+                    if (res == DialogResult.OK)
+                    {
+                        Rpta = usuarioController.EliminarUsuario(idArticulo);
+                        if (Rpta.Equals("OK"))
+                        {
+                            
+                            MensajeBox m = new MensajeBox("Elimino", "El Usuario " + this.dgvUsuarios.CurrentRow.Cells[2].Value.ToString());
+                            DialogResult dg = m.ShowDialog();
+
+                            limpiarCampos();
+                            cargarLista();
+                        }
+                        else
+                        {
+                            MessageBox.Show(Rpta, "Aviso de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
             catch (Exception ex)

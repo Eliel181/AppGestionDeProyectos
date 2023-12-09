@@ -66,7 +66,7 @@ namespace Model.Dao
             try
             {
                 SqlCon = Conexion.getInstancia().CrearConexion();
-                string sql_tarea = "spListarUsuarios";
+                string sql_tarea = "spListarUsuariosOpcion";
                 MySqlCommand Comando = new MySqlCommand(sql_tarea, SqlCon);
                 Comando.CommandTimeout = 60;
                 Comando.CommandType = CommandType.StoredProcedure;
@@ -112,6 +112,80 @@ namespace Model.Dao
 
                 SqlCon.Open();
                 Rpta = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo ingresar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+
+        public string eliminarUsuario(int idUsuario)
+        {
+            string Rpta = "";
+            string Sqltarea = "";
+            MySqlConnection SqlCon = new MySqlConnection();
+            try
+            {
+
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand Comando = new MySqlCommand(Sqltarea, SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Sqltarea = "spEliminarUsuario";
+
+                Comando.Parameters.AddWithValue("pIdUsuario", idUsuario);
+                Comando.CommandText = Sqltarea;
+
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo eliminar el registro";
+            }
+            catch (Exception ex)
+            {
+
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+
+
+        public string editarUsuario(Usuario oUs)
+        {
+            string Rpta = "";
+            string Sqltarea = "";
+            MySqlConnection SqlCon = new MySqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand Comando = new MySqlCommand(Sqltarea, SqlCon);
+
+                Sqltarea = "spActualizarUsuario";
+
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("pIdUsuario", oUs.IdUsuario);
+                Comando.Parameters.AddWithValue("pDni", oUs.Dni);
+                Comando.Parameters.AddWithValue("pApellido", oUs.Apellido);
+                Comando.Parameters.AddWithValue("pNombre", oUs.Nombre);
+                Comando.Parameters.AddWithValue("pRole", oUs.Role);
+                Comando.Parameters.AddWithValue("pTelefono", oUs.Telefono);
+                Comando.Parameters.AddWithValue("pFechaNacimiento", oUs.FechaNacimiento);
+                Comando.Parameters.AddWithValue("pLoginName", oUs.LoginName);
+                Comando.Parameters.AddWithValue("pPassword", oUs.Password);
+                Comando.Parameters.AddWithValue("pEstado", oUs.Estado);
+                Comando.Parameters.AddWithValue("pHabilidad", oUs.Habilidad);
+                Comando.Parameters.AddWithValue("pFoto", oUs.Foto);
+
+                Comando.CommandText = Sqltarea;
+
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo Actualizar el registro";
             }
             catch (Exception ex)
             {
