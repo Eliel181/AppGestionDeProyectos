@@ -33,6 +33,7 @@
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.panelDrag = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCerrar = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaDragControl1 = new Guna.UI.WinForms.GunaDragControl(this.components);
             this.gunaGradientPanel1 = new Guna.UI.WinForms.GunaGradientPanel();
             this.gunaElipsePanel1 = new Guna.UI.WinForms.GunaElipsePanel();
@@ -41,7 +42,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPassword = new Guna.UI.WinForms.GunaLineTextBox();
             this.txtLoginName = new Guna.UI.WinForms.GunaLineTextBox();
-            this.btnCerrar = new Guna.UI.WinForms.GunaGradientButton();
             this.panelDrag.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gunaGradientPanel1.SuspendLayout();
@@ -71,6 +71,34 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(165, 34);
             this.panel2.TabIndex = 0;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.AnimationHoverSpeed = 0.07F;
+            this.btnCerrar.AnimationSpeed = 0.03F;
+            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
+            this.btnCerrar.BaseColor1 = System.Drawing.Color.Crimson;
+            this.btnCerrar.BaseColor2 = System.Drawing.Color.Red;
+            this.btnCerrar.BorderColor = System.Drawing.Color.Black;
+            this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnCerrar.FocusedColor = System.Drawing.Color.Empty;
+            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCerrar.ForeColor = System.Drawing.Color.White;
+            this.btnCerrar.Image = global::VIews.Properties.Resources.cerrarX;
+            this.btnCerrar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnCerrar.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnCerrar.Location = new System.Drawing.Point(117, 0);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.OnHoverBaseColor1 = System.Drawing.Color.Gold;
+            this.btnCerrar.OnHoverBaseColor2 = System.Drawing.Color.Yellow;
+            this.btnCerrar.OnHoverBorderColor = System.Drawing.Color.Red;
+            this.btnCerrar.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnCerrar.OnHoverImage = null;
+            this.btnCerrar.OnPressedColor = System.Drawing.Color.Black;
+            this.btnCerrar.Radius = 10;
+            this.btnCerrar.Size = new System.Drawing.Size(36, 31);
+            this.btnCerrar.TabIndex = 1;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // gunaDragControl1
             // 
@@ -192,34 +220,6 @@
             this.txtLoginName.Text = "LoginName";
             this.txtLoginName.Enter += new System.EventHandler(this.txtLoginName_Enter);
             this.txtLoginName.Leave += new System.EventHandler(this.txtLoginName_Leave);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.AnimationHoverSpeed = 0.07F;
-            this.btnCerrar.AnimationSpeed = 0.03F;
-            this.btnCerrar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCerrar.BaseColor1 = System.Drawing.Color.Black;
-            this.btnCerrar.BaseColor2 = System.Drawing.Color.Black;
-            this.btnCerrar.BorderColor = System.Drawing.Color.Black;
-            this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnCerrar.FocusedColor = System.Drawing.Color.Empty;
-            this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCerrar.ForeColor = System.Drawing.Color.White;
-            this.btnCerrar.Image = global::VIews.Properties.Resources.cerrar;
-            this.btnCerrar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnCerrar.ImageSize = new System.Drawing.Size(15, 15);
-            this.btnCerrar.Location = new System.Drawing.Point(117, 0);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.OnHoverBaseColor1 = System.Drawing.Color.White;
-            this.btnCerrar.OnHoverBaseColor2 = System.Drawing.Color.White;
-            this.btnCerrar.OnHoverBorderColor = System.Drawing.Color.Red;
-            this.btnCerrar.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnCerrar.OnHoverImage = null;
-            this.btnCerrar.OnPressedColor = System.Drawing.Color.Black;
-            this.btnCerrar.Radius = 10;
-            this.btnCerrar.Size = new System.Drawing.Size(36, 31);
-            this.btnCerrar.TabIndex = 1;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // FormLogin
             // 

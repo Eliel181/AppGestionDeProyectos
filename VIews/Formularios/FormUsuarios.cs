@@ -84,7 +84,6 @@ namespace VIews.Formularios
             //this.btnGuardar.Enabled = true;
             // this.btnEditar.Enabled = false;
             //this.btnEliminar.Enabled = false;
-            //this.chkTutorCargado.Checked = false;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
@@ -221,6 +220,8 @@ namespace VIews.Formularios
             }
         }
 
+
+        //metodo para cambiar el color del checkbox
         private void chkEstado_CheckedChanged(object sender, EventArgs e)
         {
             if (this.chkEstado.Checked == true)
@@ -246,13 +247,13 @@ namespace VIews.Formularios
                 }
                 else
                 {
-                    var idArticulo = int.Parse(this.dgvUsuarios.CurrentRow.Cells[0].Value.ToString());
+                    var idUsuario = int.Parse(this.dgvUsuarios.CurrentRow.Cells[0].Value.ToString());
                     DialogResult res = MessageBox.Show("Estas Seguro de querer Eliminar", "Confirmar Eliminar", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     String Rpta = "";
 
                     if (res == DialogResult.OK)
                     {
-                        Rpta = usuarioController.EliminarUsuario(idArticulo);
+                        Rpta = usuarioController.EliminarUsuario(idUsuario);
                         if (Rpta.Equals("OK"))
                         {
                             

@@ -89,7 +89,7 @@ DELIMITER ;
 
 /****************************************************************************/
 
-/************************ CREAR PARA TODAS LA TABLAS ************************/
+/************************ USUARIOS ************************/
 
 DELIMITER $$
 CREATE PROCEDURE spCrearUsuario
@@ -113,33 +113,6 @@ BEGIN
 END $$
 DELIMITER ;
 
-DELIMITER $$
-CREATE PROCEDURE spCrearEmpleado
-(
-	IN pDni VARCHAR(100) ,
-    IN pApellido VARCHAR(100) ,
-    IN pNombre VARCHAR(100) ,
-    IN pRole VARCHAR(100) ,
-    IN pTelefono VARCHAR(100) ,
-    IN pFechaNacimiento DATE ,
-    IN pLoginName VARCHAR(100) ,
-    IN pPassword VARCHAR(100) ,
-    IN pEstado BIT(1)  ,
-    IN pHabilidad VARCHAR(100) ,
-    IN pFoto LONGBLOB 
-)
-BEGIN
-    INSERT INTO empleados
-    (Dni, Nombre, Apellido, Role, Telefono, FechaNacimiento, LoginName, Password, Estado, Habilidad, Foto)
-    VALUES (pDni, pApellido, pNombre, pRole, pTelefono, pFechaNacimiento, pLoginName, pPassword, pEstado, pHabilidad, pFoto);
-END $$
-DELIMITER ;
-
-/*call spCrearUsuario('43698945','Balero','Sergio', 'Administrador','3884668626','2002-03-23','admin','admin',1,'Diseñador','/img/admin.jpg');*/
-/*call spCrearEmpleado('42567890','Valero','Tomas', 'Empleado','3875461321','2000-03-23','tomi12','tomi12',1,'Tester','/img/emp.jpg');*/
-/****************************************************************************/
-
-/************************ LISTAR PARA TODAS LA TABLAS ************************/
 
 DELIMITER $$
 CREATE PROCEDURE spListarUsuariosOpcion(
@@ -167,8 +140,6 @@ WHERE u.Nombre LIKE CONCAT('%',cTexto,'%');
 END $$
 DELIMITER ;
 
-
-
 DELIMITER $$
 CREATE PROCEDURE spListarUsuarios
 (
@@ -180,6 +151,8 @@ BEGIN
 END $$
 DELIMITER ;
 
+
+
 DELIMITER $$
 CREATE PROCEDURE spEliminarUsuario
 (
@@ -190,6 +163,7 @@ BEGIN
     WHERE IdUsuario=pIdUsuario; 
 END $$
 DELIMITER ;
+
 
 DELIMITER $$
 CREATE PROCEDURE spActualizarUsuario
@@ -221,5 +195,62 @@ BEGIN
     Habilidad=pHabilidad,
     Foto=pFoto
     WHERE IdUsuario = pIdUsuario;
+END $$
+DELIMITER ;
+
+
+/*call spCrearUsuario('43698945','Balero','Sergio', 'Administrador','3884668626','2002-03-23','admin','admin',1,'Diseñador','/img/admin.jpg');*/
+/*call spCrearEmpleado('42567890','Valero','Tomas', 'Empleado','3875461321','2000-03-23','tomi12','tomi12',1,'Tester','/img/emp.jpg');*/
+/****************************************************************************/
+
+/************************ EMPLEADOS ************************/
+
+
+DELIMITER $$
+CREATE PROCEDURE spCrearEmpleado
+(
+	IN pDni VARCHAR(100) ,
+    IN pApellido VARCHAR(100) ,
+    IN pNombre VARCHAR(100) ,
+    IN pRole VARCHAR(100) ,
+    IN pTelefono VARCHAR(100) ,
+    IN pFechaNacimiento DATE ,
+    IN pLoginName VARCHAR(100) ,
+    IN pPassword VARCHAR(100) ,
+    IN pEstado BIT(1)  ,
+    IN pHabilidad VARCHAR(100) ,
+    IN pFoto LONGBLOB 
+)
+BEGIN
+    INSERT INTO empleados
+    (Dni, Nombre, Apellido, Role, Telefono, FechaNacimiento, LoginName, Password, Estado, Habilidad, Foto)
+    VALUES (pDni, pApellido, pNombre, pRole, pTelefono, pFechaNacimiento, pLoginName, pPassword, pEstado, pHabilidad, pFoto);
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE spListarEmpleadosOpcion(
+	IN cTexto VARCHAR(50)
+)
+BEGIN
+	SELECT e.IdEmpleado,
+		   e.Dni, 
+           e.Apellido,
+           e.Nombre,
+           e.Role,
+           e.Telefono,
+           e.FechaNacimiento,
+		   e.LoginName,
+           e.Password,
+           e.Estado,
+           e.Habilidad,
+           e.Foto,
+           "Eliminar" AS op
+           
+FROM empleados e
+
+WHERE e.Nombre LIKE CONCAT('%',cTexto,'%');
+
 END $$
 DELIMITER ;
