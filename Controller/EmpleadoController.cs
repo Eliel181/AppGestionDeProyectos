@@ -18,6 +18,11 @@ namespace Controller
             return empleadoDao.loginEmpleado(username, password);
         }
 
+        public DataTable ListarEmpleadosOpcion(string cTexto)
+        {
+            return empleadoDao.listarEmpleadosOpcion(cTexto);
+        }
+
         public DataTable ListarEmpleados(string cTexto)
         {
             return empleadoDao.listarEmpleados(cTexto);

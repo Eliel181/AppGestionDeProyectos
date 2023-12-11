@@ -25,7 +25,7 @@ namespace VIews.Formularios
 
         public void cargarLista()
         {
-            this.dgvUsuarios.DataSource = usuarioController.ListarUsuarios("%");
+            this.dgvUsuarios.DataSource = usuarioController.ListarUsuariosOpcion("%");
         }
 
         //Convertir Imagen a Vector de byts

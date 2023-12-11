@@ -18,6 +18,11 @@ namespace Model
             return usuarioDao.loginUsuario(username, password);
         }
 
+        public DataTable ListarUsuariosOpcion(string cTexto)
+        {
+            return usuarioDao.listarUsuariosOpcion(cTexto);
+        }
+
         public DataTable ListarUsuarios(string cTexto)
         {
             return usuarioDao.listarUsuarios(cTexto);
