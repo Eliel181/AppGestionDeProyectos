@@ -20,8 +20,8 @@ namespace VIews
             //Application.Run(new Form1());
             //Application.Run(new FormLogin());
             //Application.Run(new FormUsuarios());
-            //Application.Run(new FormProyectos());
-            Application.Run(new FormTareas());
+            Application.Run(new FormProyectos());
+            //Application.Run(new FormTareas());
         }
     }
 }

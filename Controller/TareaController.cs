@@ -19,6 +19,11 @@ namespace Controller
             return tareaDao.listarTareas(cTexto);
         }
 
+        public DataTable ListarTareasPorProyecto(int idProyecto)
+        {
+            return tareaDao.listarTareasPorProyecto(idProyecto);
+        }
+
         public string CrearTarea(Tarea oTa)
         {
             return tareaDao.crearTarea(oTa);

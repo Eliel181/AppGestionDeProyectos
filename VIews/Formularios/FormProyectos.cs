@@ -1,5 +1,6 @@
 ﻿using Controller;
 using Entities;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace VIews.Formularios
     public partial class FormProyectos : Form
     {
         ProyectoController proyectoController = new ProyectoController();
+        TareaController tareaController = new TareaController();
 
         public FormProyectos()
         {
@@ -89,6 +91,49 @@ namespace VIews.Formularios
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvProyectos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                //caundo haga click en una columna que no sea la de opEliminar
+                if (e.RowIndex < 0 || e.ColumnIndex != dgvProyectos.Columns["Op"].Index)
+                {
+                    return;
+                }
+                else
+                {
+                    var idProyecto = int.Parse(this.dgvProyectos.CurrentRow.Cells[0].Value.ToString());
+                    this.dgvListaTareas.DataSource = tareaController.ListarTareasPorProyecto(idProyecto);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.StackTrace);
+            }
+        }
+
+        private void dgvProyectos_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.dgvProyectos.CurrentRow != null)
+                {
+                    this.txtIdProyecto.Text = this.dgvProyectos.CurrentRow.Cells[0].Value.ToString();
+                    this.txtNombre.Text = this.dgvProyectos.CurrentRow.Cells[1].Value.ToString();
+                    this.txtDescripcion.Text = this.dgvProyectos.CurrentRow.Cells[2].Value.ToString();
+                    this.dtpFechaInicio.Value = (DateTime)this.dgvProyectos.CurrentRow.Cells[3].Value;
+                    this.dtpFechaFinalizacion.Value = (DateTime)this.dgvProyectos.CurrentRow.Cells[4].Value;
+               
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.StackTrace);
+            }
         }
     }
 }

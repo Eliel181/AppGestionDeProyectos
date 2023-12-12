@@ -36,6 +36,30 @@ namespace Model.Dao
             { if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); }
         }
 
+        public DataTable listarTareasPorProyecto(int idProyecto)
+        {
+            MySqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            MySqlConnection SqlCon = new MySqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                string sql_tarea = "spListarTareasPorProyecto";
+                MySqlCommand Comando = new MySqlCommand(sql_tarea, SqlCon);
+                Comando.CommandTimeout = 60;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("pIdProyecto", idProyecto);
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            { throw ex; }
+            finally
+            { if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); }
+        }
+
         public string crearTarea(Tarea oTa)
         {
             string Rpta = "";

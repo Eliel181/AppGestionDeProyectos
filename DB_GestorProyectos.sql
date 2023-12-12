@@ -407,3 +407,23 @@ DELIMITER ;
 /**ALTER TABLE tareas CHANGE FechaVencimineto FechaVencimiento DATE NULL;**/
 
 /*SELECT * FROM tareas;*/
+
+
+DELIMITER $$
+CREATE PROCEDURE spListarTareasPorProyecto(
+	IN pIdProyecto INT
+)
+BEGIN
+	SELECT t.IdTarea,
+           t.Nombre,
+           t.Descripcion,
+           t.FechaInicio,
+           t.FechaVencimiento,
+		   t.Estado,
+           t.Prioridad
+	FROM tareas t
+
+	WHERE t.IdProyecto = pIdProyecto;
+
+END $$
+DELIMITER ;
