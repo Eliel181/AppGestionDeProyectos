@@ -93,7 +93,7 @@ DELIMITER ;
 
 /****************************************************************************/
 
-/************************ USUARIOS ************************/
+/********************************* USUARIOS *********************************/
 
 DELIMITER $$
 CREATE PROCEDURE spCrearUsuario
@@ -337,7 +337,8 @@ DELIMITER ;
 
 
 DELIMITER $$
-CREATE PROCEDURE spListarProyectosOpcion(
+CREATE PROCEDURE spListarProyectosOpcion
+(
 	IN cTexto VARCHAR(50)
 )
 BEGIN
@@ -355,6 +356,35 @@ BEGIN
 END $$
 DELIMITER ;
 
+
+DELIMITER $$
+CREATE PROCEDURE spObtenerPorcentajeDeProyecto
+(
+	IN pIdProyecto INT
+)
+BEGIN
+	-- en estas varibles se almacenara lo datos para hacer calculos
+	DECLARE totalTareas INT;
+    DECLARE tareasFinalizadas INT;
+    DECLARE porcentaje INT;
+    
+    SELECT COUNT(*) INTO totalTareas 
+    FROM tareas t
+    WHERE t.IdProyecto = pIdProyecto;
+    
+    SELECT COUNT(*) INTO tareasFinalizadas 
+    FROM tareas t
+    WHERE t.IdProyecto = pIdProyecto AND t.Estado = "Finalizado";
+    
+    if totalTareas != 0 THEN
+		set porcentaje = ((tareasFinalizadas * 100) / totalTareas);
+	ELSE 
+		SET porcentaje = 0;
+    END IF;
+    
+    SELECT porcentaje;
+END $$
+DELIMITER ;
 
 /****************************************************************************/
 

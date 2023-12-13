@@ -35,13 +35,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
             this.btnFinalizarProyecto = new Guna.UI.WinForms.GunaGradientButton();
             this.btnEliminar = new Guna.UI.WinForms.GunaGradientButton();
             this.btnNuevo = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
-            this.gunaCircleProgressBar1 = new Guna.UI.WinForms.GunaCircleProgressBar();
+            this.gunaCircleProgressPorcentaje = new Guna.UI.WinForms.GunaCircleProgressBar();
             this.btnEditar = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
             this.btnGuardar = new Guna.UI.WinForms.GunaGradientButton();
@@ -56,7 +59,6 @@
             this.txtIdProyecto = new Guna.UI.WinForms.GunaTextBox();
             this.gunaGroupBox3 = new Guna.UI.WinForms.GunaGroupBox();
             this.dgvProyectos = new Guna.UI.WinForms.GunaDataGridView();
-            this.gunaGroupBox4 = new Guna.UI.WinForms.GunaGroupBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +66,7 @@
             this.FecFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Op = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.gunaGroupBox4 = new Guna.UI.WinForms.GunaGroupBox();
             this.dgvListaTareas = new Guna.UI.WinForms.GunaDataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,12 +75,15 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvPorcentaje = new Guna.UI.WinForms.GunaDataGridView();
+            this.porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gunaGroupBox1.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
             this.gunaGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProyectos)).BeginInit();
             this.gunaGroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaTareas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPorcentaje)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaElipse1
@@ -89,6 +95,7 @@
             this.gunaGroupBox1.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox1.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox1.Controls.Add(this.dgvPorcentaje);
             this.gunaGroupBox1.Controls.Add(this.btnFinalizarProyecto);
             this.gunaGroupBox1.Controls.Add(this.btnEliminar);
             this.gunaGroupBox1.Controls.Add(this.btnNuevo);
@@ -131,7 +138,7 @@
             this.btnFinalizarProyecto.ForeColor = System.Drawing.Color.Black;
             this.btnFinalizarProyecto.Image = null;
             this.btnFinalizarProyecto.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnFinalizarProyecto.Location = new System.Drawing.Point(304, 136);
+            this.btnFinalizarProyecto.Location = new System.Drawing.Point(254, 133);
             this.btnFinalizarProyecto.Name = "btnFinalizarProyecto";
             this.btnFinalizarProyecto.OnHoverBaseColor1 = System.Drawing.Color.DarkSlateGray;
             this.btnFinalizarProyecto.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
@@ -209,7 +216,7 @@
             this.gunaGroupBox2.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox2.BorderColor = System.Drawing.Color.DeepPink;
             this.gunaGroupBox2.BorderSize = 2;
-            this.gunaGroupBox2.Controls.Add(this.gunaCircleProgressBar1);
+            this.gunaGroupBox2.Controls.Add(this.gunaCircleProgressPorcentaje);
             this.gunaGroupBox2.LineColor = System.Drawing.Color.DeepPink;
             this.gunaGroupBox2.Location = new System.Drawing.Point(695, 26);
             this.gunaGroupBox2.Name = "gunaGroupBox2";
@@ -219,22 +226,22 @@
             this.gunaGroupBox2.Text = "Porcentaje de Proyecto";
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 8);
             // 
-            // gunaCircleProgressBar1
+            // gunaCircleProgressPorcentaje
             // 
-            this.gunaCircleProgressBar1.AnimationSpeed = 0.6F;
-            this.gunaCircleProgressBar1.BaseColor = System.Drawing.Color.White;
-            this.gunaCircleProgressBar1.IdleColor = System.Drawing.Color.Gainsboro;
-            this.gunaCircleProgressBar1.IdleOffset = 20;
-            this.gunaCircleProgressBar1.Image = null;
-            this.gunaCircleProgressBar1.ImageSize = new System.Drawing.Size(52, 52);
-            this.gunaCircleProgressBar1.Location = new System.Drawing.Point(41, 25);
-            this.gunaCircleProgressBar1.Name = "gunaCircleProgressBar1";
-            this.gunaCircleProgressBar1.ProgressMaxColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.gunaCircleProgressBar1.ProgressMinColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.gunaCircleProgressBar1.ProgressOffset = 20;
-            this.gunaCircleProgressBar1.Size = new System.Drawing.Size(130, 130);
-            this.gunaCircleProgressBar1.TabIndex = 0;
-            this.gunaCircleProgressBar1.Value = 40;
+            this.gunaCircleProgressPorcentaje.AnimationSpeed = 0.6F;
+            this.gunaCircleProgressPorcentaje.BaseColor = System.Drawing.Color.White;
+            this.gunaCircleProgressPorcentaje.IdleColor = System.Drawing.Color.Gainsboro;
+            this.gunaCircleProgressPorcentaje.IdleOffset = 20;
+            this.gunaCircleProgressPorcentaje.Image = null;
+            this.gunaCircleProgressPorcentaje.ImageSize = new System.Drawing.Size(52, 52);
+            this.gunaCircleProgressPorcentaje.Location = new System.Drawing.Point(41, 25);
+            this.gunaCircleProgressPorcentaje.Name = "gunaCircleProgressPorcentaje";
+            this.gunaCircleProgressPorcentaje.ProgressMaxColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gunaCircleProgressPorcentaje.ProgressMinColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gunaCircleProgressPorcentaje.ProgressOffset = 20;
+            this.gunaCircleProgressPorcentaje.Size = new System.Drawing.Size(130, 130);
+            this.gunaCircleProgressPorcentaje.TabIndex = 0;
+            this.gunaCircleProgressPorcentaje.Value = 40;
             // 
             // btnEditar
             // 
@@ -539,22 +546,6 @@
             this.dgvProyectos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProyectos_CellClick);
             this.dgvProyectos.DoubleClick += new System.EventHandler(this.dgvProyectos_DoubleClick);
             // 
-            // gunaGroupBox4
-            // 
-            this.gunaGroupBox4.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox4.BaseColor = System.Drawing.Color.White;
-            this.gunaGroupBox4.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox4.Controls.Add(this.dgvListaTareas);
-            this.gunaGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gunaGroupBox4.LineColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox4.Location = new System.Drawing.Point(458, 200);
-            this.gunaGroupBox4.Name = "gunaGroupBox4";
-            this.gunaGroupBox4.Radius = 10;
-            this.gunaGroupBox4.Size = new System.Drawing.Size(466, 235);
-            this.gunaGroupBox4.TabIndex = 2;
-            this.gunaGroupBox4.Text = "Tareas del Proyecto";
-            this.gunaGroupBox4.TextLocation = new System.Drawing.Point(10, 8);
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "IdProyecto";
@@ -605,6 +596,22 @@
             this.Op.HeaderText = "Op";
             this.Op.Name = "Op";
             this.Op.ReadOnly = true;
+            // 
+            // gunaGroupBox4
+            // 
+            this.gunaGroupBox4.BackColor = System.Drawing.Color.Transparent;
+            this.gunaGroupBox4.BaseColor = System.Drawing.Color.White;
+            this.gunaGroupBox4.BorderColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox4.Controls.Add(this.dgvListaTareas);
+            this.gunaGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaGroupBox4.LineColor = System.Drawing.Color.Gainsboro;
+            this.gunaGroupBox4.Location = new System.Drawing.Point(458, 200);
+            this.gunaGroupBox4.Name = "gunaGroupBox4";
+            this.gunaGroupBox4.Radius = 10;
+            this.gunaGroupBox4.Size = new System.Drawing.Size(466, 235);
+            this.gunaGroupBox4.TabIndex = 2;
+            this.gunaGroupBox4.Text = "Tareas del Proyecto";
+            this.gunaGroupBox4.TextLocation = new System.Drawing.Point(10, 8);
             // 
             // dgvListaTareas
             // 
@@ -727,6 +734,75 @@
             this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // dgvPorcentaje
+            // 
+            this.dgvPorcentaje.AllowUserToAddRows = false;
+            this.dgvPorcentaje.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.dgvPorcentaje.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvPorcentaje.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPorcentaje.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPorcentaje.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvPorcentaje.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvPorcentaje.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvPorcentaje.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.dgvPorcentaje.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPorcentaje.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.porcentaje});
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPorcentaje.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvPorcentaje.EnableHeadersVisualStyles = false;
+            this.dgvPorcentaje.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvPorcentaje.Location = new System.Drawing.Point(429, 118);
+            this.dgvPorcentaje.Name = "dgvPorcentaje";
+            this.dgvPorcentaje.ReadOnly = true;
+            this.dgvPorcentaje.RowHeadersVisible = false;
+            this.dgvPorcentaje.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPorcentaje.Size = new System.Drawing.Size(96, 58);
+            this.dgvPorcentaje.TabIndex = 31;
+            this.dgvPorcentaje.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
+            this.dgvPorcentaje.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvPorcentaje.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dgvPorcentaje.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dgvPorcentaje.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dgvPorcentaje.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dgvPorcentaje.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dgvPorcentaje.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvPorcentaje.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvPorcentaje.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvPorcentaje.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvPorcentaje.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvPorcentaje.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPorcentaje.ThemeStyle.HeaderStyle.Height = 18;
+            this.dgvPorcentaje.ThemeStyle.ReadOnly = true;
+            this.dgvPorcentaje.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvPorcentaje.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvPorcentaje.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvPorcentaje.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvPorcentaje.ThemeStyle.RowsStyle.Height = 22;
+            this.dgvPorcentaje.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dgvPorcentaje.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // porcentaje
+            // 
+            this.porcentaje.DataPropertyName = "porcentaje";
+            this.porcentaje.HeaderText = "Porcentaje";
+            this.porcentaje.Name = "porcentaje";
+            this.porcentaje.ReadOnly = true;
+            // 
             // FormProyectos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -745,6 +821,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProyectos)).EndInit();
             this.gunaGroupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaTareas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPorcentaje)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -763,7 +840,7 @@
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
         private Guna.UI.WinForms.GunaDateTimePicker dtpFechaInicio;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox2;
-        private Guna.UI.WinForms.GunaCircleProgressBar gunaCircleProgressBar1;
+        private Guna.UI.WinForms.GunaCircleProgressBar gunaCircleProgressPorcentaje;
         private Guna.UI.WinForms.GunaGradientButton btnFinalizarProyecto;
         private Guna.UI.WinForms.GunaGradientButton btnEliminar;
         private Guna.UI.WinForms.GunaGradientButton btnNuevo;
@@ -787,5 +864,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewButtonColumn1;
+        private Guna.UI.WinForms.GunaDataGridView dgvPorcentaje;
+        private System.Windows.Forms.DataGridViewTextBoxColumn porcentaje;
     }
 }

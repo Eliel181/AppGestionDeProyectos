@@ -23,5 +23,10 @@ namespace Controller
         {
             return proyectoDao.crearProyecto(oPr);
         }
+
+        public DataTable ObtenerPorcentajeDeProyecto(int idProyecto)
+        {
+            return proyectoDao.obtenerPorcentajeDeProyecto(idProyecto);
+        }
     }
 }

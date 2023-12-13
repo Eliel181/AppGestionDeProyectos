@@ -115,17 +115,25 @@ namespace VIews.Formularios
             }
         }
 
+        public void mostrarPorcentaje(int idProyecto)
+        {
+            this.dgvPorcentaje.DataSource = proyectoController.ObtenerPorcentajeDeProyecto(idProyecto);
+            this.gunaCircleProgressPorcentaje.Value = Convert.ToInt32(this.dgvPorcentaje.Rows[0].Cells[0].Value) ;
+        }
+
         private void dgvProyectos_DoubleClick(object sender, EventArgs e)
         {
             try
             {
                 if (this.dgvProyectos.CurrentRow != null)
                 {
+                    int idProyecto = int.Parse(this.dgvProyectos.CurrentRow.Cells[0].Value.ToString());
                     this.txtIdProyecto.Text = this.dgvProyectos.CurrentRow.Cells[0].Value.ToString();
                     this.txtNombre.Text = this.dgvProyectos.CurrentRow.Cells[1].Value.ToString();
                     this.txtDescripcion.Text = this.dgvProyectos.CurrentRow.Cells[2].Value.ToString();
                     this.dtpFechaInicio.Value = (DateTime)this.dgvProyectos.CurrentRow.Cells[3].Value;
                     this.dtpFechaFinalizacion.Value = (DateTime)this.dgvProyectos.CurrentRow.Cells[4].Value;
+                    mostrarPorcentaje(idProyecto);
                
                 }
             }
