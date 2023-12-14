@@ -150,7 +150,7 @@ CREATE PROCEDURE spListarUsuarios
 	IN cTexto VARCHAR(225)
 )
 BEGIN
-	SELECT u.IdUsuario, CONCAT(u.Apellido," ",u.Nombre) AS AyN FROM usuarios u                
+	SELECT u.IdUsuario, CONCAT(u.Apellido," ",u.Nombre) AS Administrador FROM usuarios u                
 	WHERE   u.nombre LIKE CONCAT('%', cTexto , '%');
 END $$
 DELIMITER ;
@@ -257,11 +257,12 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE spListarEmpleados(
+CREATE PROCEDURE spListarEmpleados
+(
 	IN cTexto VARCHAR(50)
 )
 BEGIN
-	SELECT e.IdEmpleado, CONCAT(e.Apellido," ",e.Nombre) AS AyN
+	SELECT e.IdEmpleado, CONCAT(e.Apellido," ",e.Nombre) AS Empleado
 FROM empleados e
 
 WHERE e.Nombre LIKE CONCAT('%',cTexto,'%');
@@ -360,29 +361,31 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE spObtenerPorcentajeDeProyecto
 (
-	IN pIdProyecto INT
+	IN pIdProyecto INT,
+	OUT porcentaje INT
 )
 BEGIN
 	-- en estas varibles se almacenara lo datos para hacer calculos
 	DECLARE totalTareas INT;
     DECLARE tareasFinalizadas INT;
-    DECLARE porcentaje INT;
     
+    -- cuento y almaceno todas las tareas del proyecto
     SELECT COUNT(*) INTO totalTareas 
     FROM tareas t
     WHERE t.IdProyecto = pIdProyecto;
     
+    -- cuento y almaceno solo las tareas que hallan finalizado
     SELECT COUNT(*) INTO tareasFinalizadas 
     FROM tareas t
     WHERE t.IdProyecto = pIdProyecto AND t.Estado = "Finalizado";
     
+    -- condicion en caso de que el proyecto no tenga tareas
     if totalTareas != 0 THEN
 		set porcentaje = ((tareasFinalizadas * 100) / totalTareas);
 	ELSE 
 		SET porcentaje = 0;
     END IF;
     
-    SELECT porcentaje;
 END $$
 DELIMITER ;
 
@@ -425,7 +428,10 @@ BEGIN
            t.Prioridad,
            CONCAT(e.Apellido," ",e.Nombre) AS Empleado,
            CONCAT(u.Apellido," ",u.Nombre) AS Administrador,
-           p.Nombre AS Proyecto
+           p.Nombre AS Proyecto,
+           t.IdUsuario,
+           t.IdEmpleado,
+           t.IdProyecto
 	FROM tareas t
     INNER JOIN empleados e ON t.IdEmpleado = e.IdEmpleado
     INNER JOIN usuarios u ON t.IdUsuario = u.IdUsuario
@@ -454,6 +460,20 @@ BEGIN
 	FROM tareas t
 
 	WHERE t.IdProyecto = pIdProyecto;
+
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE spTareasPorProyecto
+(
+	IN pIdProyecto INT,
+    OUT totalTareas INT
+)
+BEGIN
+	SELECT COUNT(*) INTO totalTareas 
+    FROM tareas t
+    WHERE t.IdProyecto = pIdProyecto;
 
 END $$
 DELIMITER ;

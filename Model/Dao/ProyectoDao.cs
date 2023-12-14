@@ -74,28 +74,50 @@ namespace Model.Dao
         }
 
 
-        public DataTable obtenerPorcentajeDeProyecto(int idProyecto)
+        public int obtenerPorcentajeDeProyecto(int idProyecto)
         {
-            MySqlDataReader Resultado;
-            DataTable Tabla = new DataTable();
-            MySqlConnection SqlCon = new MySqlConnection();
+            // Creación de objetos y variables
+            MySqlConnection sqlCon = new MySqlConnection();
+            MySqlParameter mySqlParameter = new MySqlParameter("@porcentaje", MySqlDbType.Int32);
+
             try
             {
-                SqlCon = Conexion.getInstancia().CrearConexion();
-                string sql_tarea = "spObtenerPorcentajeDeProyecto";
-                MySqlCommand Comando = new MySqlCommand(sql_tarea, SqlCon);
-                Comando.CommandTimeout = 60;
-                Comando.CommandType = CommandType.StoredProcedure;
-                Comando.Parameters.AddWithValue("pIdProyecto", idProyecto);
-                SqlCon.Open();
-                Resultado = Comando.ExecuteReader();
-                Tabla.Load(Resultado);
-                return Tabla;
+                // Establecer la conexión a la base de datos
+                sqlCon = Conexion.getInstancia().CrearConexion();
+
+                // Definir el nombre del procedimiento almacenado
+                string sqlTarea = "spObtenerPorcentajeDeProyecto";
+                MySqlCommand comando = new MySqlCommand(sqlTarea, sqlCon);
+                comando.CommandTimeout = 60;
+                comando.CommandType = CommandType.StoredProcedure;
+
+                // Configurar parámetro de entrada
+                comando.Parameters.AddWithValue("pIdProyecto", idProyecto);
+
+                // Configurar parámetro de salida
+                mySqlParameter.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(mySqlParameter);
+
+                // Abrir la conexión y ejecutar el procedimiento almacenado
+                sqlCon.Open();
+                comando.ExecuteReader();
+
+
+                // Obtener el valor de salida del parámetro
+                int valorDeSalida = Convert.ToInt32(mySqlParameter.Value);
+                return valorDeSalida;
             }
             catch (Exception ex)
-            { throw ex; }
+            {
+                // Manejar excepciones y propagarlas
+                throw ex;
+            }
             finally
-            { if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); }
+            {
+                // Cerrar la conexión en caso de estar abierta
+                if (sqlCon.State == ConnectionState.Open)
+                    sqlCon.Close();
+            }
         }
     }
 }

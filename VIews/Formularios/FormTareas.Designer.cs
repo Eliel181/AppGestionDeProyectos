@@ -33,7 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
-            this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
+            this.panelTareas = new Guna.UI.WinForms.GunaGroupBox();
+            this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
+            this.cmbPrioridad = new Guna.UI.WinForms.GunaComboBox();
+            this.gunaLabel9 = new Guna.UI.WinForms.GunaLabel();
             this.cmbEmpleado = new Guna.UI.WinForms.GunaComboBox();
             this.gunaLabel8 = new Guna.UI.WinForms.GunaLabel();
             this.cmbAdministrador = new Guna.UI.WinForms.GunaComboBox();
@@ -56,19 +59,22 @@
             this.txtIdTarea = new Guna.UI.WinForms.GunaTextBox();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
             this.dgvTareas = new Guna.UI.WinForms.GunaDataGridView();
-            this.cmbPrioridad = new Guna.UI.WinForms.GunaComboBox();
-            this.gunaLabel9 = new Guna.UI.WinForms.GunaLabel();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FecIni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Vencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prioridad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Proyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gunaGroupBox1.SuspendLayout();
+            this.idUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idProyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gunaLabel11 = new Guna.UI.WinForms.GunaLabel();
+            this.lblNroTareas = new Guna.UI.WinForms.GunaLabel();
+            this.panelTareas.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTareas)).BeginInit();
             this.SuspendLayout();
@@ -77,44 +83,92 @@
             // 
             this.gunaElipse1.TargetControl = this;
             // 
-            // gunaGroupBox1
+            // panelTareas
             // 
-            this.gunaGroupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.gunaGroupBox1.BaseColor = System.Drawing.Color.White;
-            this.gunaGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox1.Controls.Add(this.cmbPrioridad);
-            this.gunaGroupBox1.Controls.Add(this.gunaLabel9);
-            this.gunaGroupBox1.Controls.Add(this.cmbEmpleado);
-            this.gunaGroupBox1.Controls.Add(this.gunaLabel8);
-            this.gunaGroupBox1.Controls.Add(this.cmbAdministrador);
-            this.gunaGroupBox1.Controls.Add(this.gunaLabel7);
-            this.gunaGroupBox1.Controls.Add(this.cmbProyecto);
-            this.gunaGroupBox1.Controls.Add(this.gunaLabel6);
-            this.gunaGroupBox1.Controls.Add(this.btnEliminar);
-            this.gunaGroupBox1.Controls.Add(this.btnNuevo);
-            this.gunaGroupBox1.Controls.Add(this.btnEditar);
-            this.gunaGroupBox1.Controls.Add(this.gunaLabel5);
-            this.gunaGroupBox1.Controls.Add(this.btnGuardar);
-            this.gunaGroupBox1.Controls.Add(this.dtpFechaVencimiento);
-            this.gunaGroupBox1.Controls.Add(this.gunaLabel3);
-            this.gunaGroupBox1.Controls.Add(this.dtpFechaInicio);
-            this.gunaGroupBox1.Controls.Add(this.gunaLabel4);
-            this.gunaGroupBox1.Controls.Add(this.txtDescripcion);
-            this.gunaGroupBox1.Controls.Add(this.gunaLabel2);
-            this.gunaGroupBox1.Controls.Add(this.txtNombre);
-            this.gunaGroupBox1.Controls.Add(this.gunaLabel1);
-            this.gunaGroupBox1.Controls.Add(this.txtIdTarea);
-            this.gunaGroupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gunaGroupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaGroupBox1.ForeColor = System.Drawing.Color.White;
-            this.gunaGroupBox1.LineColor = System.Drawing.Color.RoyalBlue;
-            this.gunaGroupBox1.LineTop = 20;
-            this.gunaGroupBox1.Location = new System.Drawing.Point(0, 0);
-            this.gunaGroupBox1.Name = "gunaGroupBox1";
-            this.gunaGroupBox1.Size = new System.Drawing.Size(924, 200);
-            this.gunaGroupBox1.TabIndex = 1;
-            this.gunaGroupBox1.Text = "Datos de Tarea";
-            this.gunaGroupBox1.TextLocation = new System.Drawing.Point(430, 4);
+            this.panelTareas.BackColor = System.Drawing.Color.Transparent;
+            this.panelTareas.BaseColor = System.Drawing.Color.White;
+            this.panelTareas.BorderColor = System.Drawing.Color.Gainsboro;
+            this.panelTareas.Controls.Add(this.lblNroTareas);
+            this.panelTareas.Controls.Add(this.gunaLabel11);
+            this.panelTareas.Controls.Add(this.gunaLabel10);
+            this.panelTareas.Controls.Add(this.cmbPrioridad);
+            this.panelTareas.Controls.Add(this.gunaLabel9);
+            this.panelTareas.Controls.Add(this.cmbEmpleado);
+            this.panelTareas.Controls.Add(this.gunaLabel8);
+            this.panelTareas.Controls.Add(this.cmbAdministrador);
+            this.panelTareas.Controls.Add(this.gunaLabel7);
+            this.panelTareas.Controls.Add(this.cmbProyecto);
+            this.panelTareas.Controls.Add(this.gunaLabel6);
+            this.panelTareas.Controls.Add(this.btnEliminar);
+            this.panelTareas.Controls.Add(this.btnNuevo);
+            this.panelTareas.Controls.Add(this.btnEditar);
+            this.panelTareas.Controls.Add(this.gunaLabel5);
+            this.panelTareas.Controls.Add(this.btnGuardar);
+            this.panelTareas.Controls.Add(this.dtpFechaVencimiento);
+            this.panelTareas.Controls.Add(this.gunaLabel3);
+            this.panelTareas.Controls.Add(this.dtpFechaInicio);
+            this.panelTareas.Controls.Add(this.gunaLabel4);
+            this.panelTareas.Controls.Add(this.txtDescripcion);
+            this.panelTareas.Controls.Add(this.gunaLabel2);
+            this.panelTareas.Controls.Add(this.txtNombre);
+            this.panelTareas.Controls.Add(this.gunaLabel1);
+            this.panelTareas.Controls.Add(this.txtIdTarea);
+            this.panelTareas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTareas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panelTareas.ForeColor = System.Drawing.Color.White;
+            this.panelTareas.LineColor = System.Drawing.Color.RoyalBlue;
+            this.panelTareas.LineTop = 20;
+            this.panelTareas.Location = new System.Drawing.Point(0, 0);
+            this.panelTareas.Name = "panelTareas";
+            this.panelTareas.Size = new System.Drawing.Size(924, 200);
+            this.panelTareas.TabIndex = 1;
+            this.panelTareas.Text = "Datos de Tarea";
+            this.panelTareas.TextLocation = new System.Drawing.Point(430, 4);
+            // 
+            // gunaLabel10
+            // 
+            this.gunaLabel10.AutoSize = true;
+            this.gunaLabel10.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel10.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel10.Location = new System.Drawing.Point(285, 164);
+            this.gunaLabel10.Name = "gunaLabel10";
+            this.gunaLabel10.Size = new System.Drawing.Size(0, 17);
+            this.gunaLabel10.TabIndex = 38;
+            // 
+            // cmbPrioridad
+            // 
+            this.cmbPrioridad.BackColor = System.Drawing.Color.Transparent;
+            this.cmbPrioridad.BaseColor = System.Drawing.Color.White;
+            this.cmbPrioridad.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.cmbPrioridad.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbPrioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPrioridad.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbPrioridad.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbPrioridad.ForeColor = System.Drawing.Color.Black;
+            this.cmbPrioridad.FormattingEnabled = true;
+            this.cmbPrioridad.Items.AddRange(new object[] {
+            "BAJA",
+            "NORMAL",
+            "URGENTE",
+            "CRITICA"});
+            this.cmbPrioridad.Location = new System.Drawing.Point(370, 120);
+            this.cmbPrioridad.Name = "cmbPrioridad";
+            this.cmbPrioridad.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.cmbPrioridad.OnHoverItemForeColor = System.Drawing.Color.White;
+            this.cmbPrioridad.Radius = 5;
+            this.cmbPrioridad.Size = new System.Drawing.Size(155, 26);
+            this.cmbPrioridad.TabIndex = 37;
+            // 
+            // gunaLabel9
+            // 
+            this.gunaLabel9.AutoSize = true;
+            this.gunaLabel9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel9.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel9.Location = new System.Drawing.Point(285, 126);
+            this.gunaLabel9.Name = "gunaLabel9";
+            this.gunaLabel9.Size = new System.Drawing.Size(79, 17);
+            this.gunaLabel9.TabIndex = 36;
+            this.gunaLabel9.Text = "PRIORIDAD";
             // 
             // cmbEmpleado
             // 
@@ -516,18 +570,21 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTareas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvTareas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTareas.ColumnHeadersHeight = 21;
             this.dgvTareas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Nombre,
             this.Descripcion,
             this.FecIni,
             this.Vencimiento,
-            this.Empleado,
             this.Estado,
             this.Prioridad,
+            this.Empleado,
             this.Admin,
-            this.Proyecto});
+            this.Proyecto,
+            this.idUsuario,
+            this.idEmpleado,
+            this.idProyecto});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(233)))), ((int)(((byte)(252)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -557,7 +614,7 @@
             this.dgvTareas.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvTareas.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
             this.dgvTareas.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvTareas.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTareas.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.dgvTareas.ThemeStyle.HeaderStyle.Height = 21;
             this.dgvTareas.ThemeStyle.ReadOnly = true;
             this.dgvTareas.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(233)))), ((int)(((byte)(252)))));
@@ -567,41 +624,7 @@
             this.dgvTareas.ThemeStyle.RowsStyle.Height = 22;
             this.dgvTareas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(185)))), ((int)(((byte)(246)))));
             this.dgvTareas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // cmbPrioridad
-            // 
-            this.cmbPrioridad.BackColor = System.Drawing.Color.Transparent;
-            this.cmbPrioridad.BaseColor = System.Drawing.Color.White;
-            this.cmbPrioridad.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.cmbPrioridad.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbPrioridad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPrioridad.FocusedColor = System.Drawing.Color.Empty;
-            this.cmbPrioridad.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbPrioridad.ForeColor = System.Drawing.Color.Black;
-            this.cmbPrioridad.FormattingEnabled = true;
-            this.cmbPrioridad.Items.AddRange(new object[] {
-            "BAJA",
-            "NORMAL",
-            "URGENTE",
-            "CRITICA"});
-            this.cmbPrioridad.Location = new System.Drawing.Point(370, 120);
-            this.cmbPrioridad.Name = "cmbPrioridad";
-            this.cmbPrioridad.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.cmbPrioridad.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.cmbPrioridad.Radius = 5;
-            this.cmbPrioridad.Size = new System.Drawing.Size(155, 26);
-            this.cmbPrioridad.TabIndex = 37;
-            // 
-            // gunaLabel9
-            // 
-            this.gunaLabel9.AutoSize = true;
-            this.gunaLabel9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel9.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel9.Location = new System.Drawing.Point(285, 126);
-            this.gunaLabel9.Name = "gunaLabel9";
-            this.gunaLabel9.Size = new System.Drawing.Size(79, 17);
-            this.gunaLabel9.TabIndex = 36;
-            this.gunaLabel9.Text = "PRIORIDAD";
+            this.dgvTareas.DoubleClick += new System.EventHandler(this.dgvTareas_DoubleClick);
             // 
             // Id
             // 
@@ -643,14 +666,6 @@
             this.Vencimiento.Name = "Vencimiento";
             this.Vencimiento.ReadOnly = true;
             // 
-            // Empleado
-            // 
-            this.Empleado.DataPropertyName = "Empleado";
-            this.Empleado.FillWeight = 96.8818F;
-            this.Empleado.HeaderText = "Empleado";
-            this.Empleado.Name = "Empleado";
-            this.Empleado.ReadOnly = true;
-            // 
             // Estado
             // 
             this.Estado.DataPropertyName = "Estado";
@@ -664,6 +679,14 @@
             this.Prioridad.HeaderText = "Prioridad";
             this.Prioridad.Name = "Prioridad";
             this.Prioridad.ReadOnly = true;
+            // 
+            // Empleado
+            // 
+            this.Empleado.DataPropertyName = "Empleado";
+            this.Empleado.FillWeight = 96.8818F;
+            this.Empleado.HeaderText = "Empleado";
+            this.Empleado.Name = "Empleado";
+            this.Empleado.ReadOnly = true;
             // 
             // Admin
             // 
@@ -681,6 +704,52 @@
             this.Proyecto.Name = "Proyecto";
             this.Proyecto.ReadOnly = true;
             // 
+            // idUsuario
+            // 
+            this.idUsuario.DataPropertyName = "IdUsuario";
+            this.idUsuario.HeaderText = "IdUsuario";
+            this.idUsuario.Name = "idUsuario";
+            this.idUsuario.ReadOnly = true;
+            this.idUsuario.Visible = false;
+            // 
+            // idEmpleado
+            // 
+            this.idEmpleado.DataPropertyName = "IdEmpleado";
+            this.idEmpleado.HeaderText = "IdEmpleado";
+            this.idEmpleado.Name = "idEmpleado";
+            this.idEmpleado.ReadOnly = true;
+            this.idEmpleado.Visible = false;
+            // 
+            // idProyecto
+            // 
+            this.idProyecto.DataPropertyName = "IdProyecto";
+            this.idProyecto.HeaderText = "IdProyecto";
+            this.idProyecto.Name = "idProyecto";
+            this.idProyecto.ReadOnly = true;
+            this.idProyecto.Visible = false;
+            // 
+            // gunaLabel11
+            // 
+            this.gunaLabel11.AutoSize = true;
+            this.gunaLabel11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel11.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel11.Location = new System.Drawing.Point(267, 164);
+            this.gunaLabel11.Name = "gunaLabel11";
+            this.gunaLabel11.Size = new System.Drawing.Size(97, 17);
+            this.gunaLabel11.TabIndex = 39;
+            this.gunaLabel11.Text = "Nro de Tareas:";
+            // 
+            // lblNroTareas
+            // 
+            this.lblNroTareas.AutoSize = true;
+            this.lblNroTareas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNroTareas.ForeColor = System.Drawing.Color.Black;
+            this.lblNroTareas.Location = new System.Drawing.Point(370, 164);
+            this.lblNroTareas.Name = "lblNroTareas";
+            this.lblNroTareas.Size = new System.Drawing.Size(15, 17);
+            this.lblNroTareas.TabIndex = 40;
+            this.lblNroTareas.Text = "0";
+            // 
             // FormTareas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -688,12 +757,12 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(924, 450);
             this.Controls.Add(this.gunaGroupBox2);
-            this.Controls.Add(this.gunaGroupBox1);
+            this.Controls.Add(this.panelTareas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormTareas";
             this.Text = "Gestion de Tareas";
-            this.gunaGroupBox1.ResumeLayout(false);
-            this.gunaGroupBox1.PerformLayout();
+            this.panelTareas.ResumeLayout(false);
+            this.panelTareas.PerformLayout();
             this.gunaGroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTareas)).EndInit();
             this.ResumeLayout(false);
@@ -703,7 +772,7 @@
         #endregion
 
         private Guna.UI.WinForms.GunaElipse gunaElipse1;
-        private Guna.UI.WinForms.GunaGroupBox gunaGroupBox1;
+        private Guna.UI.WinForms.GunaGroupBox panelTareas;
         private Guna.UI.WinForms.GunaGradientButton btnEliminar;
         private Guna.UI.WinForms.GunaGradientButton btnNuevo;
         private Guna.UI.WinForms.GunaGradientButton btnEditar;
@@ -728,15 +797,21 @@
         private Guna.UI.WinForms.GunaDataGridView dgvTareas;
         private Guna.UI.WinForms.GunaComboBox cmbPrioridad;
         private Guna.UI.WinForms.GunaLabel gunaLabel9;
+        private Guna.UI.WinForms.GunaLabel gunaLabel10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn FecIni;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vencimiento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Empleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prioridad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Empleado;
         private System.Windows.Forms.DataGridViewTextBoxColumn Admin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Proyecto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idEmpleado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProyecto;
+        private Guna.UI.WinForms.GunaLabel lblNroTareas;
+        private Guna.UI.WinForms.GunaLabel gunaLabel11;
     }
 }

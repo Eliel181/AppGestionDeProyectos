@@ -41,7 +41,7 @@ namespace VIews.Formularios
             EmpleadoController controller = new EmpleadoController();
             this.cmbEmpleado.DataSource = controller.ListarEmpleados("%");
             this.cmbEmpleado.ValueMember = "IdEmpleado";//el valor que se selecciona
-            this.cmbEmpleado.DisplayMember = "AyN";//el valor que se mostrara en la vista
+            this.cmbEmpleado.DisplayMember = "Empleado";//el valor que se mostrara en la vista
         }
 
         public void cargarListaUsuarios()
@@ -49,7 +49,7 @@ namespace VIews.Formularios
             UsuarioController controller = new UsuarioController();
             this.cmbAdministrador.DataSource = controller.ListarUsuarios("%");
             this.cmbAdministrador.ValueMember = "IdUsuario";//el valor que se selecciona
-            this.cmbAdministrador.DisplayMember = "AyN";//el valor que se mostrara en la vista
+            this.cmbAdministrador.DisplayMember = "Administrador";//el valor que se mostrara en la vista
         }
 
         public void cargarLista()
@@ -120,6 +120,36 @@ namespace VIews.Formularios
         private void btnEliminar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dgvTareas_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.dgvTareas.CurrentRow != null)
+                {
+                   
+                    this.txtIdTarea.Text = this.dgvTareas.CurrentRow.Cells[0].Value.ToString();
+                    this.txtNombre.Text = this.dgvTareas.CurrentRow.Cells[1].Value.ToString();
+                    this.txtDescripcion.Text = this.dgvTareas.CurrentRow.Cells[2].Value.ToString();
+                    this.dtpFechaInicio.Value = (DateTime)this.dgvTareas.CurrentRow.Cells[3].Value;
+                    this.dtpFechaVencimiento.Value = (DateTime)this.dgvTareas.CurrentRow.Cells[4].Value;
+                    //this.lblNroTareas.Text = this.dgvTareas.CurrentRow.Cells[5].Value.ToString();
+                    this.cmbPrioridad.Text = this.dgvTareas.CurrentRow.Cells[6].Value.ToString();
+                    this.cmbEmpleado.Text = this.dgvTareas.CurrentRow.Cells[7].Value.ToString();
+                    this.cmbAdministrador.Text = this.dgvTareas.CurrentRow.Cells[8].Value.ToString();
+                    this.cmbProyecto.SelectedValue = this.dgvTareas.CurrentRow.Cells[12].Value.ToString();
+                    //this.lblNroTareas.Text = tareaController.ObtenerTareasPorProyecto(int.Parse(this.dgvTareas.Curr;
+
+                    int nroTareas = tareaController.ObtenerTareasPorProyecto(int.Parse(this.dgvTareas.CurrentRow.Cells[12].Value.ToString()));
+                    this.lblNroTareas.Text = Convert.ToString(nroTareas);
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.StackTrace);
+            }
         }
     }
 }

@@ -28,5 +28,10 @@ namespace Controller
         {
             return tareaDao.crearTarea(oTa);
         }
+
+        public int ObtenerTareasPorProyecto(int idProyecto)
+        {
+            return tareaDao.obtenerTotalTareasPorProyecto(idProyecto);
+        }
     }
 }

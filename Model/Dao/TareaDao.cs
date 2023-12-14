@@ -99,5 +99,51 @@ namespace Model.Dao
             }
             return Rpta;
         }
+
+        public int obtenerTotalTareasPorProyecto(int idProyecto)
+        {
+            // Creación de objetos y variables
+            MySqlConnection sqlCon = new MySqlConnection();
+            MySqlParameter mySqlParameter = new MySqlParameter("@totalTareas", MySqlDbType.Int32);
+
+            try
+            {
+                // Establecer la conexión a la base de datos
+                sqlCon = Conexion.getInstancia().CrearConexion();
+
+                // Definir el nombre del procedimiento almacenado
+                string sqlTarea = "spTareasPorProyecto";
+                MySqlCommand comando = new MySqlCommand(sqlTarea, sqlCon);
+                comando.CommandTimeout = 60;
+                comando.CommandType = CommandType.StoredProcedure;
+
+                // Configurar parámetro de entrada
+                comando.Parameters.AddWithValue("pIdProyecto", idProyecto);
+
+                // Configurar parámetro de salida
+                mySqlParameter.Direction = ParameterDirection.Output;
+                comando.Parameters.Add(mySqlParameter);
+
+                // Abrir la conexión y ejecutar el procedimiento almacenado
+                sqlCon.Open();
+                comando.ExecuteReader();
+                
+
+                // Obtener el valor de salida del parámetro
+                int valorDeSalida = Convert.ToInt32(mySqlParameter.Value);
+                return valorDeSalida;
+            }
+            catch (Exception ex)
+            {
+                // Manejar excepciones y propagarlas
+                throw ex;
+            }
+            finally
+            {
+                // Cerrar la conexión en caso de estar abierta
+                if (sqlCon.State == ConnectionState.Open)
+                    sqlCon.Close();
+            }
+        }
     }
 }

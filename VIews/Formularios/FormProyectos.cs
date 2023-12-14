@@ -117,8 +117,10 @@ namespace VIews.Formularios
 
         public void mostrarPorcentaje(int idProyecto)
         {
-            this.dgvPorcentaje.DataSource = proyectoController.ObtenerPorcentajeDeProyecto(idProyecto);
-            this.gunaCircleProgressPorcentaje.Value = Convert.ToInt32(this.dgvPorcentaje.Rows[0].Cells[0].Value) ;
+            /*this.dgvPorcentaje.DataSource = proyectoController.ObtenerPorcentajeDeProyecto(idProyecto);
+            this.gunaCircleProgressPorcentaje.Value = Convert.ToInt32(this.dgvPorcentaje.Rows[0].Cells[0].Value) ;*/
+            int porcentaje = proyectoController.ObtenerPorcentajeDeProyecto(idProyecto);
+            this.gunaCircleProgressPorcentaje.Value = porcentaje;
         }
 
         private void dgvProyectos_DoubleClick(object sender, EventArgs e)

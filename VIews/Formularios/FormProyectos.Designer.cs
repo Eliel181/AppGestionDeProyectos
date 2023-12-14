@@ -35,9 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
             this.btnFinalizarProyecto = new Guna.UI.WinForms.GunaGradientButton();
@@ -75,15 +72,12 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvPorcentaje = new Guna.UI.WinForms.GunaDataGridView();
-            this.porcentaje = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gunaGroupBox1.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
             this.gunaGroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProyectos)).BeginInit();
             this.gunaGroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaTareas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPorcentaje)).BeginInit();
             this.SuspendLayout();
             // 
             // gunaElipse1
@@ -95,7 +89,6 @@
             this.gunaGroupBox1.BackColor = System.Drawing.Color.Transparent;
             this.gunaGroupBox1.BaseColor = System.Drawing.Color.White;
             this.gunaGroupBox1.BorderColor = System.Drawing.Color.Gainsboro;
-            this.gunaGroupBox1.Controls.Add(this.dgvPorcentaje);
             this.gunaGroupBox1.Controls.Add(this.btnFinalizarProyecto);
             this.gunaGroupBox1.Controls.Add(this.btnEliminar);
             this.gunaGroupBox1.Controls.Add(this.btnNuevo);
@@ -129,8 +122,8 @@
             this.btnFinalizarProyecto.AnimationHoverSpeed = 0.07F;
             this.btnFinalizarProyecto.AnimationSpeed = 0.03F;
             this.btnFinalizarProyecto.BackColor = System.Drawing.Color.Transparent;
-            this.btnFinalizarProyecto.BaseColor1 = System.Drawing.Color.Aqua;
-            this.btnFinalizarProyecto.BaseColor2 = System.Drawing.Color.SpringGreen;
+            this.btnFinalizarProyecto.BaseColor1 = System.Drawing.Color.DodgerBlue;
+            this.btnFinalizarProyecto.BaseColor2 = System.Drawing.Color.LightSteelBlue;
             this.btnFinalizarProyecto.BorderColor = System.Drawing.Color.Black;
             this.btnFinalizarProyecto.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnFinalizarProyecto.FocusedColor = System.Drawing.Color.Empty;
@@ -138,7 +131,7 @@
             this.btnFinalizarProyecto.ForeColor = System.Drawing.Color.Black;
             this.btnFinalizarProyecto.Image = null;
             this.btnFinalizarProyecto.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnFinalizarProyecto.Location = new System.Drawing.Point(254, 133);
+            this.btnFinalizarProyecto.Location = new System.Drawing.Point(328, 138);
             this.btnFinalizarProyecto.Name = "btnFinalizarProyecto";
             this.btnFinalizarProyecto.OnHoverBaseColor1 = System.Drawing.Color.DarkSlateGray;
             this.btnFinalizarProyecto.OnHoverBaseColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(85)))), ((int)(((byte)(255)))));
@@ -158,7 +151,7 @@
             this.btnEliminar.AnimationSpeed = 0.03F;
             this.btnEliminar.BackColor = System.Drawing.Color.Transparent;
             this.btnEliminar.BaseColor1 = System.Drawing.Color.Crimson;
-            this.btnEliminar.BaseColor2 = System.Drawing.Color.Red;
+            this.btnEliminar.BaseColor2 = System.Drawing.Color.HotPink;
             this.btnEliminar.BorderColor = System.Drawing.Color.Black;
             this.btnEliminar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnEliminar.FocusedColor = System.Drawing.Color.Empty;
@@ -230,25 +223,26 @@
             // 
             this.gunaCircleProgressPorcentaje.AnimationSpeed = 0.6F;
             this.gunaCircleProgressPorcentaje.BaseColor = System.Drawing.Color.White;
+            this.gunaCircleProgressPorcentaje.ForeColor = System.Drawing.Color.Black;
             this.gunaCircleProgressPorcentaje.IdleColor = System.Drawing.Color.Gainsboro;
             this.gunaCircleProgressPorcentaje.IdleOffset = 20;
             this.gunaCircleProgressPorcentaje.Image = null;
             this.gunaCircleProgressPorcentaje.ImageSize = new System.Drawing.Size(52, 52);
             this.gunaCircleProgressPorcentaje.Location = new System.Drawing.Point(41, 25);
             this.gunaCircleProgressPorcentaje.Name = "gunaCircleProgressPorcentaje";
-            this.gunaCircleProgressPorcentaje.ProgressMaxColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.gunaCircleProgressPorcentaje.ProgressMinColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.gunaCircleProgressPorcentaje.ProgressMaxColor = System.Drawing.Color.Purple;
+            this.gunaCircleProgressPorcentaje.ProgressMinColor = System.Drawing.Color.Crimson;
             this.gunaCircleProgressPorcentaje.ProgressOffset = 20;
             this.gunaCircleProgressPorcentaje.Size = new System.Drawing.Size(130, 130);
             this.gunaCircleProgressPorcentaje.TabIndex = 0;
-            this.gunaCircleProgressPorcentaje.Value = 40;
+            this.gunaCircleProgressPorcentaje.Value = 30;
             // 
             // btnEditar
             // 
             this.btnEditar.AnimationHoverSpeed = 0.07F;
             this.btnEditar.AnimationSpeed = 0.03F;
             this.btnEditar.BackColor = System.Drawing.Color.Transparent;
-            this.btnEditar.BaseColor1 = System.Drawing.Color.DarkOrange;
+            this.btnEditar.BaseColor1 = System.Drawing.Color.Yellow;
             this.btnEditar.BaseColor2 = System.Drawing.Color.Gold;
             this.btnEditar.BorderColor = System.Drawing.Color.Black;
             this.btnEditar.DialogResult = System.Windows.Forms.DialogResult.None;
@@ -288,8 +282,8 @@
             this.btnGuardar.AnimationHoverSpeed = 0.07F;
             this.btnGuardar.AnimationSpeed = 0.03F;
             this.btnGuardar.BackColor = System.Drawing.Color.Transparent;
-            this.btnGuardar.BaseColor1 = System.Drawing.Color.MediumSeaGreen;
-            this.btnGuardar.BaseColor2 = System.Drawing.Color.LimeGreen;
+            this.btnGuardar.BaseColor1 = System.Drawing.Color.Yellow;
+            this.btnGuardar.BaseColor2 = System.Drawing.Color.Lime;
             this.btnGuardar.BorderColor = System.Drawing.Color.Black;
             this.btnGuardar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnGuardar.FocusedColor = System.Drawing.Color.Empty;
@@ -316,7 +310,7 @@
             // 
             this.dtpFechaFinalizacion.BackColor = System.Drawing.Color.Transparent;
             this.dtpFechaFinalizacion.BaseColor = System.Drawing.Color.White;
-            this.dtpFechaFinalizacion.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.dtpFechaFinalizacion.BorderColor = System.Drawing.Color.DeepPink;
             this.dtpFechaFinalizacion.CustomFormat = null;
             this.dtpFechaFinalizacion.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.dtpFechaFinalizacion.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
@@ -352,7 +346,7 @@
             // 
             this.dtpFechaInicio.BackColor = System.Drawing.Color.Transparent;
             this.dtpFechaInicio.BaseColor = System.Drawing.Color.White;
-            this.dtpFechaInicio.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.dtpFechaInicio.BorderColor = System.Drawing.Color.DeepPink;
             this.dtpFechaInicio.CustomFormat = null;
             this.dtpFechaInicio.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.dtpFechaInicio.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
@@ -388,7 +382,7 @@
             // 
             this.txtDescripcion.BackColor = System.Drawing.Color.Transparent;
             this.txtDescripcion.BaseColor = System.Drawing.Color.White;
-            this.txtDescripcion.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.txtDescripcion.BorderColor = System.Drawing.Color.DeepPink;
             this.txtDescripcion.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescripcion.FocusedBaseColor = System.Drawing.Color.White;
             this.txtDescripcion.FocusedBorderColor = System.Drawing.Color.Indigo;
@@ -417,7 +411,7 @@
             // 
             this.txtNombre.BackColor = System.Drawing.Color.Transparent;
             this.txtNombre.BaseColor = System.Drawing.Color.White;
-            this.txtNombre.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.txtNombre.BorderColor = System.Drawing.Color.DeepPink;
             this.txtNombre.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNombre.FocusedBaseColor = System.Drawing.Color.White;
             this.txtNombre.FocusedBorderColor = System.Drawing.Color.Indigo;
@@ -446,7 +440,7 @@
             // 
             this.txtIdProyecto.BackColor = System.Drawing.Color.Transparent;
             this.txtIdProyecto.BaseColor = System.Drawing.Color.White;
-            this.txtIdProyecto.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.txtIdProyecto.BorderColor = System.Drawing.Color.DeepPink;
             this.txtIdProyecto.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtIdProyecto.FocusedBaseColor = System.Drawing.Color.White;
             this.txtIdProyecto.FocusedBorderColor = System.Drawing.Color.Indigo;
@@ -734,75 +728,6 @@
             this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // dgvPorcentaje
-            // 
-            this.dgvPorcentaje.AllowUserToAddRows = false;
-            this.dgvPorcentaje.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.dgvPorcentaje.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvPorcentaje.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPorcentaje.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPorcentaje.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvPorcentaje.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvPorcentaje.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvPorcentaje.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvPorcentaje.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPorcentaje.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.porcentaje});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPorcentaje.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvPorcentaje.EnableHeadersVisualStyles = false;
-            this.dgvPorcentaje.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvPorcentaje.Location = new System.Drawing.Point(429, 118);
-            this.dgvPorcentaje.Name = "dgvPorcentaje";
-            this.dgvPorcentaje.ReadOnly = true;
-            this.dgvPorcentaje.RowHeadersVisible = false;
-            this.dgvPorcentaje.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPorcentaje.Size = new System.Drawing.Size(96, 58);
-            this.dgvPorcentaje.TabIndex = 31;
-            this.dgvPorcentaje.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
-            this.dgvPorcentaje.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvPorcentaje.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dgvPorcentaje.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dgvPorcentaje.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dgvPorcentaje.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dgvPorcentaje.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dgvPorcentaje.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvPorcentaje.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dgvPorcentaje.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvPorcentaje.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvPorcentaje.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvPorcentaje.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPorcentaje.ThemeStyle.HeaderStyle.Height = 18;
-            this.dgvPorcentaje.ThemeStyle.ReadOnly = true;
-            this.dgvPorcentaje.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvPorcentaje.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvPorcentaje.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvPorcentaje.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvPorcentaje.ThemeStyle.RowsStyle.Height = 22;
-            this.dgvPorcentaje.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvPorcentaje.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // porcentaje
-            // 
-            this.porcentaje.DataPropertyName = "porcentaje";
-            this.porcentaje.HeaderText = "Porcentaje";
-            this.porcentaje.Name = "porcentaje";
-            this.porcentaje.ReadOnly = true;
-            // 
             // FormProyectos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -821,7 +746,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvProyectos)).EndInit();
             this.gunaGroupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaTareas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPorcentaje)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -864,7 +788,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewButtonColumn1;
-        private Guna.UI.WinForms.GunaDataGridView dgvPorcentaje;
-        private System.Windows.Forms.DataGridViewTextBoxColumn porcentaje;
     }
 }
