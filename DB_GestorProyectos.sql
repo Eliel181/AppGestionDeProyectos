@@ -389,6 +389,53 @@ BEGIN
 END $$
 DELIMITER ;
 
+
+-- este procedimineto se encarga de verificar que las tareas esten finalizadas
+-- para poder finalizar el proyecto 
+DELIMITER $$
+CREATE PROCEDURE spConsultarEstadoDeProyecto
+(
+	IN pIdProyecto INT,
+	OUT bandera INT
+)
+BEGIN
+	-- en estas varibles se almacenara lo datos para hacer calculos
+	DECLARE totalTareas INT;
+    DECLARE tareasFinalizadas INT;
+    
+    -- cuento y almaceno todas las tareas del proyecto
+    SELECT COUNT(*) INTO totalTareas 
+    FROM tareas t
+    WHERE t.IdProyecto = pIdProyecto;
+    
+    -- cuento y almaceno solo las tareas que hallan finalizado
+    SELECT COUNT(*) INTO tareasFinalizadas 
+    FROM tareas t
+    WHERE t.IdProyecto = pIdProyecto AND t.Estado = "Finalizado";
+    
+    IF totalTareas = 0 THEN
+		SET bandera = 0;
+	 ELSEIF totalTareas = tareasFinalizadas THEN
+		SET bandera = 1;
+	ELSE 
+		SET bandera = 0;
+	END IF;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE spFinalizarProyecto
+(
+	IN pIdProyecto INT 
+)
+BEGIN
+	UPDATE proyectos SET 
+	Estado = "Finalizado"
+	WHERE IdProyecto = pIdProyecto;
+END $$
+DELIMITER ;
+
 /****************************************************************************/
 
 /******************************** TAREAS *********************************/
@@ -477,3 +524,116 @@ BEGIN
 
 END $$
 DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE spListarTareasPorEmpleado
+(
+	IN pIdEmpleado INT
+)
+BEGIN
+	SELECT t.IdTarea,
+		   t.Nombre,
+           t.Descripcion,
+           t.FechaInicio,
+           t.FechaVencimiento,
+           t.Estado,
+           t.Prioridad,
+           p.Nombre AS Proyecto,
+           t.IdUsuario,
+           t.IdEmpleado,
+           t.IdProyecto
+	FROM tareas t
+    INNER JOIN empleados e ON t.IdEmpleado = e.IdEmpleado
+    INNER JOIN proyectos p ON t.IdProyecto = p.IdProyecto 
+    WHERE t.IdEmpleado = pIdEmpleado;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE spListarTareasPorVencimiento
+(
+	IN pIdEmpleado INT
+)
+BEGIN
+	SELECT t.IdTarea,
+		   t.Nombre,
+           t.Descripcion,
+           t.FechaInicio,
+           t.FechaVencimiento,
+           t.Estado,
+           t.Prioridad,
+           p.Nombre AS Proyecto,
+           t.IdUsuario,
+           t.IdEmpleado,
+           t.IdProyecto
+	FROM tareas t
+    INNER JOIN empleados e ON t.IdEmpleado = e.IdEmpleado
+    INNER JOIN proyectos p ON t.IdProyecto = p.IdProyecto 
+    WHERE t.IdEmpleado = pIdEmpleado
+    ORDER BY FechaVencimiento;
+
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE spListarTareasPorEstado
+(
+	IN pIdEmpleado INT,
+    IN pEstado VARCHAR(100)
+)
+BEGIN
+	SELECT t.IdTarea,
+		   t.Nombre,
+           t.Descripcion,
+           t.FechaInicio,
+           t.FechaVencimiento,
+           t.Estado,
+           t.Prioridad,
+           p.Nombre AS Proyecto,
+           t.IdUsuario,
+           t.IdEmpleado,
+           t.IdProyecto
+	FROM tareas t
+    INNER JOIN empleados e ON t.IdEmpleado = e.IdEmpleado
+    INNER JOIN proyectos p ON t.IdProyecto = p.IdProyecto 
+    WHERE t.IdEmpleado = pIdEmpleado AND t.Estado LIKE CONCAT('%', pEstado , '%');
+
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE spListarTareasPorPrioridad
+(
+	IN pIdEmpleado INT,
+    IN pPrioridad VARCHAR(100)
+)
+BEGIN
+	SELECT t.IdTarea,
+		   t.Nombre,
+           t.Descripcion,
+           t.FechaInicio,
+           t.FechaVencimiento,
+           t.Estado,
+           t.Prioridad,
+           p.Nombre AS Proyecto,
+           t.IdUsuario,
+           t.IdEmpleado,
+           t.IdProyecto
+	FROM tareas t
+    INNER JOIN empleados e ON t.IdEmpleado = e.IdEmpleado
+    INNER JOIN proyectos p ON t.IdProyecto = p.IdProyecto 
+    WHERE t.IdEmpleado = pIdEmpleado AND t.Prioridad LIKE CONCAT('%', pPrioridad , '%');
+
+END $$
+DELIMITER ;
+
+SELECT * FROM tareas 
+WHERE IdEmpleado = 3
+ORDER BY FechaVencimiento;
+
+SELECT * FROM tareas 
+WHERE IdEmpleado = 2
+ORDER BY Prioridad DESC;

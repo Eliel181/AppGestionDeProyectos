@@ -18,6 +18,10 @@ namespace VIews.Formularios
         ProyectoController proyectoController = new ProyectoController();
         TareaController tareaController = new TareaController();
 
+        //esta variable sera utilizada para almacenar el id de un proeyecto
+        //que quieramos eliminar
+        int idProyectoFinalizar = 0;
+
         public FormProyectos()
         {
             InitializeComponent();
@@ -123,12 +127,30 @@ namespace VIews.Formularios
             this.gunaCircleProgressPorcentaje.Value = porcentaje;
         }
 
+        public void cambiarEstadoDelBotonFinalizarProyecto(int idProyecto)  
+        {
+            if (proyectoController.ConsultarEstadoDeProyecto(idProyecto) == 1)
+            {
+                this.btnFinalizarProyecto.Enabled = true;
+                this.btnFinalizarProyecto.BaseColor1 = Color.DeepSkyBlue;
+                this.btnFinalizarProyecto.BaseColor2 = Color.BlueViolet;
+            }
+            else
+            {
+                this.btnFinalizarProyecto.Enabled = false;
+                this.btnFinalizarProyecto.BaseColor1 = Color.Silver;
+                this.btnFinalizarProyecto.BaseColor2 = Color.Silver;
+            }
+
+        }
+
         private void dgvProyectos_DoubleClick(object sender, EventArgs e)
         {
             try
             {
                 if (this.dgvProyectos.CurrentRow != null)
                 {
+                    idProyectoFinalizar = int.Parse(this.dgvProyectos.CurrentRow.Cells[0].Value.ToString());
                     int idProyecto = int.Parse(this.dgvProyectos.CurrentRow.Cells[0].Value.ToString());
                     this.txtIdProyecto.Text = this.dgvProyectos.CurrentRow.Cells[0].Value.ToString();
                     this.txtNombre.Text = this.dgvProyectos.CurrentRow.Cells[1].Value.ToString();
@@ -136,13 +158,47 @@ namespace VIews.Formularios
                     this.dtpFechaInicio.Value = (DateTime)this.dgvProyectos.CurrentRow.Cells[3].Value;
                     this.dtpFechaFinalizacion.Value = (DateTime)this.dgvProyectos.CurrentRow.Cells[4].Value;
                     mostrarPorcentaje(idProyecto);
-               
+                    cambiarEstadoDelBotonFinalizarProyecto(idProyecto);
                 }
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.StackTrace);
+            }
+        }
+
+        private void btnFinalizarProyecto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(this.txtIdProyecto.Text != "")
+                {
+                    DialogResult res = MessageBox.Show("Estas Seguro de querer Finalizar el Proyecto", "Confirmar ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    String Rpta = "";
+
+                    if(res == DialogResult.OK)
+                    {
+                        Rpta = proyectoController.FInalizarProyecto(idProyectoFinalizar);
+                        MensajeBox m = new MensajeBox("Finalizo", "El Proyecto" );
+                        DialogResult dg = m.ShowDialog();
+
+                        cargarLista();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Rpta, "Aviso de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe seleccionar algun proyecto");
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

@@ -29,3 +29,4 @@ C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDe
 C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\obj\Debug\VIews.Formularios.FormUsuarios.resources
 C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\obj\Debug\VIews.Formularios.FormEmpleados.resources
 C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\obj\Debug\VIews.Formularios.FormTareas.resources
+C:\Users\baler\OneDrive\Documentos\ProgramacionConcurrenteYParalela\AppGestionDeProyectos\VIews\obj\Debug\VIews.Formularios.FormParaEmpleado.resources

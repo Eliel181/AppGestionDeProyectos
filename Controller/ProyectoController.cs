@@ -28,5 +28,15 @@ namespace Controller
         {
             return proyectoDao.obtenerPorcentajeDeProyecto(idProyecto);
         }
+
+        public int ConsultarEstadoDeProyecto(int idProyecto)
+        {
+            return proyectoDao.consultarEstadoDeProyecto(idProyecto);
+        }
+
+        public string FInalizarProyecto(int idProyecto)
+        {
+            return proyectoDao.finalizarProyecto(idProyecto);
+        }
     }
 }

@@ -33,5 +33,25 @@ namespace Controller
         {
             return tareaDao.obtenerTotalTareasPorProyecto(idProyecto);
         }
+
+        public DataTable ListarTareasPorEmpleado(int idEmpleado)
+        {
+            return tareaDao.listarTareasPorEmpleado(idEmpleado);
+        }
+
+        public DataTable ListarTareasPorVencimiento(int idEmpleado)
+        {
+            return tareaDao.listarTareasPorVencimiento(idEmpleado);
+        }
+
+        public DataTable ListarTareasPorEstado(int idEmpleado, string estado)
+        {
+            return tareaDao.listarTareasPorEstado(idEmpleado, estado);
+        }
+
+        public DataTable ListarTareasPorPrioridad(int idEmpleado, string prioridad)
+        {
+            return tareaDao.listarTareasPorPrioridad(idEmpleado, prioridad);
+        }
     }
 }

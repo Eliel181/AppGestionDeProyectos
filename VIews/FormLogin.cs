@@ -47,6 +47,7 @@ namespace VIews
                         DialogResult dg = m.ShowDialog();
 
                         formUsuarios.Show();
+                        formUsuarios.FormClosed += Logout;
                         this.Hide();
                     }
                     else if (validarEmpleado)
@@ -56,6 +57,7 @@ namespace VIews
                         DialogResult dg = m.ShowDialog();
 
                         formParaEmpleado.Show();
+                        formParaEmpleado.FormClosed += Logout;
                         this.Hide();
                     }
                     else
@@ -113,6 +115,24 @@ namespace VIews
             {
                 this.txtPassword.Text = "Password";
                 this.txtPassword.ForeColor = Color.Black;
+            }
+        }
+
+        private void Logout(object sender, EventArgs e)
+        {
+            try
+            { 
+                this.txtPassword.Text = "Password";
+                this.txtPassword.ForeColor = Color.Silver;   
+                this.txtLoginName.Text = "LoginName";
+                this.txtLoginName.ForeColor = Color.Silver;
+               
+                this.Show();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Error", ex.StackTrace);
             }
         }
     }
