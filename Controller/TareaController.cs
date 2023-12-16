@@ -53,5 +53,10 @@ namespace Controller
         {
             return tareaDao.listarTareasPorPrioridad(idEmpleado, prioridad);
         }
+
+        public String ActualizarEstadoDeTarea(int idTarea, string estado)
+        {
+            return tareaDao.actualizarEstadoDeTarea(idTarea, estado);
+        }
     }
 }

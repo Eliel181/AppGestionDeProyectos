@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.panelTareas = new Guna.UI.WinForms.GunaGroupBox();
+            this.lblNroTareas = new Guna.UI.WinForms.GunaLabel();
+            this.gunaLabel11 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
             this.cmbPrioridad = new Guna.UI.WinForms.GunaComboBox();
             this.gunaLabel9 = new Guna.UI.WinForms.GunaLabel();
@@ -72,8 +74,7 @@
             this.idUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idEmpleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idProyecto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gunaLabel11 = new Guna.UI.WinForms.GunaLabel();
-            this.lblNroTareas = new Guna.UI.WinForms.GunaLabel();
+            this.lblMensaje = new Guna.UI.WinForms.GunaLabel();
             this.panelTareas.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTareas)).BeginInit();
@@ -88,10 +89,11 @@
             this.panelTareas.BackColor = System.Drawing.Color.Transparent;
             this.panelTareas.BaseColor = System.Drawing.Color.White;
             this.panelTareas.BorderColor = System.Drawing.Color.Gainsboro;
+            this.panelTareas.Controls.Add(this.lblMensaje);
             this.panelTareas.Controls.Add(this.lblNroTareas);
-            this.panelTareas.Controls.Add(this.gunaLabel11);
             this.panelTareas.Controls.Add(this.gunaLabel10);
             this.panelTareas.Controls.Add(this.cmbPrioridad);
+            this.panelTareas.Controls.Add(this.gunaLabel11);
             this.panelTareas.Controls.Add(this.gunaLabel9);
             this.panelTareas.Controls.Add(this.cmbEmpleado);
             this.panelTareas.Controls.Add(this.gunaLabel8);
@@ -125,6 +127,28 @@
             this.panelTareas.Text = "Datos de Tarea";
             this.panelTareas.TextLocation = new System.Drawing.Point(430, 4);
             // 
+            // lblNroTareas
+            // 
+            this.lblNroTareas.AutoSize = true;
+            this.lblNroTareas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNroTareas.ForeColor = System.Drawing.Color.Black;
+            this.lblNroTareas.Location = new System.Drawing.Point(754, 111);
+            this.lblNroTareas.Name = "lblNroTareas";
+            this.lblNroTareas.Size = new System.Drawing.Size(15, 17);
+            this.lblNroTareas.TabIndex = 40;
+            this.lblNroTareas.Text = "0";
+            // 
+            // gunaLabel11
+            // 
+            this.gunaLabel11.AutoSize = true;
+            this.gunaLabel11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gunaLabel11.ForeColor = System.Drawing.Color.Black;
+            this.gunaLabel11.Location = new System.Drawing.Point(651, 111);
+            this.gunaLabel11.Name = "gunaLabel11";
+            this.gunaLabel11.Size = new System.Drawing.Size(97, 17);
+            this.gunaLabel11.TabIndex = 39;
+            this.gunaLabel11.Text = "Nro de Tareas:";
+            // 
             // gunaLabel10
             // 
             this.gunaLabel10.AutoSize = true;
@@ -151,7 +175,7 @@
             "NORMAL",
             "URGENTE",
             "CRITICA"});
-            this.cmbPrioridad.Location = new System.Drawing.Point(370, 120);
+            this.cmbPrioridad.Location = new System.Drawing.Point(370, 116);
             this.cmbPrioridad.Name = "cmbPrioridad";
             this.cmbPrioridad.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.cmbPrioridad.OnHoverItemForeColor = System.Drawing.Color.White;
@@ -164,7 +188,7 @@
             this.gunaLabel9.AutoSize = true;
             this.gunaLabel9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaLabel9.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel9.Location = new System.Drawing.Point(285, 126);
+            this.gunaLabel9.Location = new System.Drawing.Point(285, 122);
             this.gunaLabel9.Name = "gunaLabel9";
             this.gunaLabel9.Size = new System.Drawing.Size(79, 17);
             this.gunaLabel9.TabIndex = 36;
@@ -181,7 +205,7 @@
             this.cmbEmpleado.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbEmpleado.ForeColor = System.Drawing.Color.Black;
             this.cmbEmpleado.FormattingEnabled = true;
-            this.cmbEmpleado.Location = new System.Drawing.Point(629, 123);
+            this.cmbEmpleado.Location = new System.Drawing.Point(370, 161);
             this.cmbEmpleado.Name = "cmbEmpleado";
             this.cmbEmpleado.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.cmbEmpleado.OnHoverItemForeColor = System.Drawing.Color.White;
@@ -194,7 +218,7 @@
             this.gunaLabel8.AutoSize = true;
             this.gunaLabel8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaLabel8.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel8.Location = new System.Drawing.Point(548, 123);
+            this.gunaLabel8.Location = new System.Drawing.Point(289, 161);
             this.gunaLabel8.Name = "gunaLabel8";
             this.gunaLabel8.Size = new System.Drawing.Size(78, 17);
             this.gunaLabel8.TabIndex = 34;
@@ -211,7 +235,7 @@
             this.cmbAdministrador.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbAdministrador.ForeColor = System.Drawing.Color.Black;
             this.cmbAdministrador.FormattingEnabled = true;
-            this.cmbAdministrador.Location = new System.Drawing.Point(629, 79);
+            this.cmbAdministrador.Location = new System.Drawing.Point(616, 33);
             this.cmbAdministrador.Name = "cmbAdministrador";
             this.cmbAdministrador.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.cmbAdministrador.OnHoverItemForeColor = System.Drawing.Color.White;
@@ -224,7 +248,7 @@
             this.gunaLabel7.AutoSize = true;
             this.gunaLabel7.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaLabel7.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel7.Location = new System.Drawing.Point(570, 84);
+            this.gunaLabel7.Location = new System.Drawing.Point(557, 38);
             this.gunaLabel7.Name = "gunaLabel7";
             this.gunaLabel7.Size = new System.Drawing.Size(53, 17);
             this.gunaLabel7.TabIndex = 32;
@@ -241,20 +265,24 @@
             this.cmbProyecto.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbProyecto.ForeColor = System.Drawing.Color.Black;
             this.cmbProyecto.FormattingEnabled = true;
-            this.cmbProyecto.Location = new System.Drawing.Point(629, 36);
+            this.cmbProyecto.Items.AddRange(new object[] {
+            "--seleccionar"});
+            this.cmbProyecto.Location = new System.Drawing.Point(616, 82);
             this.cmbProyecto.Name = "cmbProyecto";
             this.cmbProyecto.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.cmbProyecto.OnHoverItemForeColor = System.Drawing.Color.White;
             this.cmbProyecto.Radius = 5;
             this.cmbProyecto.Size = new System.Drawing.Size(155, 26);
             this.cmbProyecto.TabIndex = 31;
+            this.cmbProyecto.SelectedIndexChanged += new System.EventHandler(this.cmbProyecto_SelectedIndexChanged);
+            this.cmbProyecto.SelectedValueChanged += new System.EventHandler(this.cmbProyecto_SelectedValueChanged);
             // 
             // gunaLabel6
             // 
             this.gunaLabel6.AutoSize = true;
             this.gunaLabel6.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaLabel6.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel6.Location = new System.Drawing.Point(548, 36);
+            this.gunaLabel6.Location = new System.Drawing.Point(535, 82);
             this.gunaLabel6.Name = "gunaLabel6";
             this.gunaLabel6.Size = new System.Drawing.Size(75, 17);
             this.gunaLabel6.TabIndex = 30;
@@ -470,7 +498,7 @@
             this.txtDescripcion.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtDescripcion.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtDescripcion.ForeColor = System.Drawing.Color.Black;
-            this.txtDescripcion.Location = new System.Drawing.Point(117, 114);
+            this.txtDescripcion.Location = new System.Drawing.Point(117, 126);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.PasswordChar = '\0';
             this.txtDescripcion.Radius = 5;
@@ -482,7 +510,7 @@
             this.gunaLabel2.AutoSize = true;
             this.gunaLabel2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaLabel2.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel2.Location = new System.Drawing.Point(19, 123);
+            this.gunaLabel2.Location = new System.Drawing.Point(19, 135);
             this.gunaLabel2.Name = "gunaLabel2";
             this.gunaLabel2.Size = new System.Drawing.Size(92, 17);
             this.gunaLabel2.TabIndex = 13;
@@ -555,21 +583,21 @@
             // 
             this.dgvTareas.AllowUserToAddRows = false;
             this.dgvTareas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(223)))), ((int)(((byte)(251)))));
-            this.dgvTareas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(189)))), ((int)(((byte)(223)))), ((int)(((byte)(251)))));
+            this.dgvTareas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvTareas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTareas.BackgroundColor = System.Drawing.Color.White;
             this.dgvTareas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTareas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvTareas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(242)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTareas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(242)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTareas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvTareas.ColumnHeadersHeight = 21;
             this.dgvTareas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -585,14 +613,14 @@
             this.idUsuario,
             this.idEmpleado,
             this.idProyecto});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(233)))), ((int)(((byte)(252)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(185)))), ((int)(((byte)(246)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTareas.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(233)))), ((int)(((byte)(252)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(185)))), ((int)(((byte)(246)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTareas.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvTareas.EnableHeadersVisualStyles = false;
             this.dgvTareas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(222)))), ((int)(((byte)(251)))));
             this.dgvTareas.Location = new System.Drawing.Point(0, 19);
@@ -728,27 +756,16 @@
             this.idProyecto.ReadOnly = true;
             this.idProyecto.Visible = false;
             // 
-            // gunaLabel11
+            // lblMensaje
             // 
-            this.gunaLabel11.AutoSize = true;
-            this.gunaLabel11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaLabel11.ForeColor = System.Drawing.Color.Black;
-            this.gunaLabel11.Location = new System.Drawing.Point(267, 164);
-            this.gunaLabel11.Name = "gunaLabel11";
-            this.gunaLabel11.Size = new System.Drawing.Size(97, 17);
-            this.gunaLabel11.TabIndex = 39;
-            this.gunaLabel11.Text = "Nro de Tareas:";
-            // 
-            // lblNroTareas
-            // 
-            this.lblNroTareas.AutoSize = true;
-            this.lblNroTareas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNroTareas.ForeColor = System.Drawing.Color.Black;
-            this.lblNroTareas.Location = new System.Drawing.Point(370, 164);
-            this.lblNroTareas.Name = "lblNroTareas";
-            this.lblNroTareas.Size = new System.Drawing.Size(15, 17);
-            this.lblNroTareas.TabIndex = 40;
-            this.lblNroTareas.Text = "0";
+            this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMensaje.ForeColor = System.Drawing.Color.Red;
+            this.lblMensaje.Location = new System.Drawing.Point(580, 142);
+            this.lblMensaje.Name = "lblMensaje";
+            this.lblMensaje.Size = new System.Drawing.Size(191, 46);
+            this.lblMensaje.TabIndex = 41;
+            this.lblMensaje.Text = "Este proyecto alcanzo el maximo de tareas posibles";
+            this.lblMensaje.Visible = false;
             // 
             // FormTareas
             // 
@@ -813,5 +830,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idProyecto;
         private Guna.UI.WinForms.GunaLabel lblNroTareas;
         private Guna.UI.WinForms.GunaLabel gunaLabel11;
+        private Guna.UI.WinForms.GunaLabel lblMensaje;
     }
 }

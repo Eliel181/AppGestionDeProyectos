@@ -637,3 +637,33 @@ ORDER BY FechaVencimiento;
 SELECT * FROM tareas 
 WHERE IdEmpleado = 2
 ORDER BY Prioridad DESC;
+
+
+DELIMITER $$
+CREATE PROCEDURE spActualizarEstadoDeTarea
+(
+	IN pIdTarea INT,
+    IN pEstado VARCHAR(100)
+)	
+BEGIN 
+	UPDATE tareas t
+    SET t.Estado = pEstado
+    WHERE t.IdTarea = pIdTarea;
+END $$
+DELIMITER ;
+
+/****************************************************************************/
+
+/******************************** TRIGGER *********************************/
+
+DELIMITER $$
+CREATE TRIGGER CambiarEstadoDeProyecto
+AFTER INSERT ON tareas
+FOR EACH ROW
+BEGIN 
+	UPDATE proyectos p
+    SET p.Estado = "Incompleto"
+    WHERE p.IdProyecto = NEW.IdProyecto;
+END $$
+DELIMITER ;
+

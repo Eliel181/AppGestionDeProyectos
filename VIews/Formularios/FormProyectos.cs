@@ -125,6 +125,7 @@ namespace VIews.Formularios
             this.gunaCircleProgressPorcentaje.Value = Convert.ToInt32(this.dgvPorcentaje.Rows[0].Cells[0].Value) ;*/
             int porcentaje = proyectoController.ObtenerPorcentajeDeProyecto(idProyecto);
             this.gunaCircleProgressPorcentaje.Value = porcentaje;
+            this.lblProcentajeProyecto.Text = $"{porcentaje}%";
         }
 
         public void cambiarEstadoDelBotonFinalizarProyecto(int idProyecto)  

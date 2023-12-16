@@ -16,6 +16,7 @@ namespace VIews.Formularios
     public partial class FormParaEmpleado : Form
     {
         TareaController tareaController = new TareaController();
+        int idTarea = 0; //esta variable se usara para modificar el estado de una tarea
 
 
         public FormParaEmpleado()
@@ -23,11 +24,39 @@ namespace VIews.Formularios
             InitializeComponent();
             cargarDatosDeEmpleadoLogueado();
             cargarLista();
+            deshabilitarBotones();
         }
 
         public void cargarLista()
         {
             this.dgvTareasDeEmpleado.DataSource = tareaController.ListarTareasPorEmpleado(EmpleadoCache.IdEmpleado);
+        }
+
+        public void limpiarCampos()
+        {
+            this.lblIdTarea.Text = ".....";
+            this.lblNombre.Text = ".....";
+            this.lblDescripcion.Text = ".....";
+            this.lblFechaInicio.Text = ".....";
+            this.lblFechaVencimiento.Text = ".....";
+            this.lblEstado.Text = ".....";
+            this.lblPrioridad.Text = ".....";
+            this.lblProyecto.Text = ".....";
+
+            deshabilitarBotones();
+        }
+
+        public void deshabilitarBotones()
+        {
+            this.btnNoIniciado.Enabled = false;
+            this.btnEnProceso.Enabled = false;
+            this.btnFinalizado.Enabled = false;
+        }
+        public void habilitarBotones()
+        {
+            this.btnNoIniciado.Enabled = true;
+            this.btnEnProceso.Enabled = true;
+            this.btnFinalizado.Enabled = true;
         }
 
         //convertir byte[] a Imagen
@@ -109,6 +138,82 @@ namespace VIews.Formularios
         private void rbtnCritico_CheckedChanged(object sender, EventArgs e)
         {
             this.dgvTareasDeEmpleado.DataSource = tareaController.ListarTareasPorPrioridad(EmpleadoCache.IdEmpleado, "CRITICA");
+        }
+
+        //botones para actualizar el estado de una tarea
+
+        private void btnNoIniciado_Click(object sender, EventArgs e)
+        {
+            if (idTarea != 0)
+            {
+                tareaController.ActualizarEstadoDeTarea(idTarea, "No iniciado");
+                MensajeBox m = new MensajeBox("Actualizo", "El estado de la Tarea");
+                DialogResult dg = m.ShowDialog();
+                limpiarCampos();
+                cargarLista();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una tarea");
+            }
+        }
+
+        private void btnEnProceso_Click(object sender, EventArgs e)
+        {
+            if (idTarea != 0)
+            {
+                tareaController.ActualizarEstadoDeTarea(idTarea, "En proceso");
+                MensajeBox m = new MensajeBox("Actualizo", "El estado de la Tarea" );
+                DialogResult dg = m.ShowDialog();
+
+                limpiarCampos();
+                cargarLista();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una tarea");
+            }
+        }
+
+        private void btnFinalizado_Click(object sender, EventArgs e)
+        {
+            if (idTarea != 0)
+            {
+                tareaController.ActualizarEstadoDeTarea(idTarea, "Finalizado");
+                MensajeBox m = new MensajeBox("Actualizo", "El estado de la Tarea");
+                DialogResult dg = m.ShowDialog();
+                limpiarCampos();
+                cargarLista();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una tarea");
+            }
+        }
+
+        private void dgvTareasDeEmpleado_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.dgvTareasDeEmpleado.CurrentRow != null)
+                {
+                    idTarea = int.Parse(this.dgvTareasDeEmpleado.CurrentRow.Cells[0].Value.ToString());
+                    this.lblIdTarea.Text = this.dgvTareasDeEmpleado.CurrentRow.Cells[0].Value.ToString();
+                    this.lblNombre.Text = this.dgvTareasDeEmpleado.CurrentRow.Cells[1].Value.ToString();
+                    this.lblDescripcion.Text = this.dgvTareasDeEmpleado.CurrentRow.Cells[2].Value.ToString();
+                    this.lblFechaInicio.Text = this.dgvTareasDeEmpleado.CurrentRow.Cells[3].Value.ToString();
+                    this.lblFechaVencimiento.Text = this.dgvTareasDeEmpleado.CurrentRow.Cells[4].Value.ToString();
+                    this.lblEstado.Text = this.dgvTareasDeEmpleado.CurrentRow.Cells[5].Value.ToString();
+                    this.lblPrioridad.Text = this.dgvTareasDeEmpleado.CurrentRow.Cells[6].Value.ToString();
+                    this.lblProyecto.Text = this.dgvTareasDeEmpleado.CurrentRow.Cells[7].Value.ToString();
+                    habilitarBotones();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.StackTrace);
+            }
         }
     }
 }

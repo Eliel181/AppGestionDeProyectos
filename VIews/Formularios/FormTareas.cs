@@ -16,6 +16,8 @@ namespace VIews.Formularios
     public partial class FormTareas : Form
     {
         TareaController tareaController = new TareaController();
+        int idProyect = 0;
+
 
         public FormTareas()
         {
@@ -26,6 +28,8 @@ namespace VIews.Formularios
             cargarListaEmpleados();
             cargarListaUsuarios();
             cargarLista();//cargar el dataGridView
+
+            
         }
 
         public void cargarListaProyectos()
@@ -150,6 +154,44 @@ namespace VIews.Formularios
 
                 MessageBox.Show(ex.StackTrace);
             }
+        }
+
+        private void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+               
+                if (this.cmbProyecto.SelectedValue.ToString() != null)
+                {
+
+                    idProyect = int.Parse(cmbProyecto.SelectedValue.ToString());
+                    int numTareas = tareaController.ObtenerTareasPorProyecto(idProyect);
+                    this.lblNroTareas.Text = Convert.ToString(numTareas);
+
+                    if (numTareas == 10)
+                    {
+                        this.btnGuardar.Enabled = false;
+                        this.lblMensaje.Visible = true;
+                    }
+                    else
+                    {
+                        this.btnGuardar.Enabled = true;
+                        this.lblMensaje.Visible = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void cmbProyecto_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //idProyect = 1;
+            
         }
     }
 }
