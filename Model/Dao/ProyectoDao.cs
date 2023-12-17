@@ -74,6 +74,74 @@ namespace Model.Dao
         }
 
 
+        public string editarProyecto(Proyecto oPr)
+        {
+            string Rpta = "";
+            string Sqltarea = "";
+            MySqlConnection SqlCon = new MySqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand Comando = new MySqlCommand(Sqltarea, SqlCon);
+
+                Sqltarea = "spActualizarProyecto";
+
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("pIdProyecto", oPr.IdProyecto);
+                Comando.Parameters.AddWithValue("pNombre", oPr.Nombre);
+                Comando.Parameters.AddWithValue("pDescripcion", oPr.Descripcion);
+                Comando.Parameters.AddWithValue("pFechaInicio", oPr.FechaInicio);
+                Comando.Parameters.AddWithValue("pFechaFinalizacion", oPr.FechaFinalizacion);
+
+                Comando.CommandText = Sqltarea;
+
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo Actualizar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+
+
+        public string eliminarProyecto(int idProyecto)
+        {
+            string Rpta = "";
+            string Sqltarea = "";
+            MySqlConnection SqlCon = new MySqlConnection();
+            try
+            {
+
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand Comando = new MySqlCommand(Sqltarea, SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Sqltarea = "spEliminarProyecto";
+
+                Comando.Parameters.AddWithValue("pIdProyecto", idProyecto);
+                Comando.CommandText = Sqltarea;
+
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo eliminar el registro";
+            }
+            catch (Exception ex)
+            {
+
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+
+
         public int obtenerPorcentajeDeProyecto(int idProyecto)
         {
             // Creación de objetos y variables

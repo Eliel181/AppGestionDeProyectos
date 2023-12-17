@@ -36,6 +36,150 @@ namespace Model.Dao
             { if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); }
         }
 
+        public DataTable listarUsuarioPorTarea(int IdTarea)
+        {
+            MySqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            MySqlConnection SqlCon = new MySqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                string sql_tarea = "spListarUsuarioPorTarea";
+                MySqlCommand Comando = new MySqlCommand(sql_tarea, SqlCon);
+                Comando.CommandTimeout = 60;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("pIdTarea", IdTarea);
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            { throw ex; }
+            finally
+            { if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); }
+        }
+
+
+        public string editarTarea(Tarea oTa)
+        {
+            string Rpta = "";
+            string Sqltarea = "";
+            MySqlConnection SqlCon = new MySqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand Comando = new MySqlCommand(Sqltarea, SqlCon);
+
+                Sqltarea = "spActualizarTarea";
+
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("pIdTarea", oTa.IdTarea);
+                Comando.Parameters.AddWithValue("pNombre", oTa.Nombre);
+                Comando.Parameters.AddWithValue("pDescripcion", oTa.Descripcion);
+                Comando.Parameters.AddWithValue("pFechaInicio", oTa.FechaInicio);
+                Comando.Parameters.AddWithValue("pFechaVencimiento", oTa.FechaVencimiento);
+                Comando.Parameters.AddWithValue("pPrioridad", oTa.Prioridad);
+                Comando.Parameters.AddWithValue("pIdEmpleado", oTa.IdEmpleado);
+                Comando.Parameters.AddWithValue("pIdUsuario", oTa.IdUsuario);
+                Comando.Parameters.AddWithValue("pIdProyecto", oTa.IdProyecto);
+
+                Comando.CommandText = Sqltarea;
+
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo Actualizar el registro";
+            }
+            catch (Exception ex)
+            {
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+
+
+        public string eliminarTarea(int idTarea)
+        {
+            string Rpta = "";
+            string Sqltarea = "";
+            MySqlConnection SqlCon = new MySqlConnection();
+            try
+            {
+
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                MySqlCommand Comando = new MySqlCommand(Sqltarea, SqlCon);
+                Comando.CommandType = CommandType.StoredProcedure;
+                Sqltarea = "spEliminarTarea";
+
+                Comando.Parameters.AddWithValue("pIdTarea", idTarea);
+                Comando.CommandText = Sqltarea;
+
+                SqlCon.Open();
+                Rpta = Comando.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo eliminar el registro";
+            }
+            catch (Exception ex)
+            {
+
+                Rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return Rpta;
+        }
+
+        public DataTable listarEmpleadoPorTarea(int IdTarea)
+        {
+            MySqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            MySqlConnection SqlCon = new MySqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                string sql_tarea = "spListarEmpleadosPorTarea";
+                MySqlCommand Comando = new MySqlCommand(sql_tarea, SqlCon);
+                Comando.CommandTimeout = 60;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("pIdTarea", IdTarea);
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            { throw ex; }
+            finally
+            { if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); }
+        }
+
+        public DataTable listarProyectoPorTarea(int IdTarea)
+        {
+            MySqlDataReader Resultado;
+            DataTable Tabla = new DataTable();
+            MySqlConnection SqlCon = new MySqlConnection();
+            try
+            {
+                SqlCon = Conexion.getInstancia().CrearConexion();
+                string sql_tarea = "spListarProyectoPorTarea";
+                MySqlCommand Comando = new MySqlCommand(sql_tarea, SqlCon);
+                Comando.CommandTimeout = 60;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.Parameters.AddWithValue("pIdTarea", IdTarea);
+                SqlCon.Open();
+                Resultado = Comando.ExecuteReader();
+                Tabla.Load(Resultado);
+                return Tabla;
+            }
+            catch (Exception ex)
+            { throw ex; }
+            finally
+            { if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); }
+        }
+
         public DataTable listarTareasPorProyecto(int idProyecto)
         {
             MySqlDataReader Resultado;
@@ -112,7 +256,7 @@ namespace Model.Dao
                 sqlCon = Conexion.getInstancia().CrearConexion();
 
                 // Definir el nombre del procedimiento almacenado
-                string sqlTarea = "spTareasPorProyecto";
+                string sqlTarea = "spCantidadDeTareasPorProyecto";
                 MySqlCommand comando = new MySqlCommand(sqlTarea, sqlCon);
                 comando.CommandTimeout = 60;
                 comando.CommandType = CommandType.StoredProcedure;

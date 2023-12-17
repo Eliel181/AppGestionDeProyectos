@@ -23,9 +23,9 @@ namespace Controller
             return empleadoDao.listarEmpleadosOpcion(cTexto);
         }
 
-        public DataTable ListarEmpleados(string cTexto)
+        public DataTable ListarEmpleadosActivos(string cTexto)
         {
-            return empleadoDao.listarEmpleados(cTexto);
+            return empleadoDao.listarEmpleadosActivos(cTexto);
         }
 
         public string CrearEmpleado(Empleado oEm)

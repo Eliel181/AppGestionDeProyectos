@@ -23,9 +23,9 @@ namespace Model
             return usuarioDao.listarUsuariosOpcion(cTexto);
         }
 
-        public DataTable ListarUsuarios(string cTexto)
+        public DataTable ListarUsuariosActivos(string cTexto)
         {
-            return usuarioDao.listarUsuarios(cTexto);
+            return usuarioDao.listarUsuariosActivos(cTexto);
         }
 
         public string CrearUsuario(Usuario oU)

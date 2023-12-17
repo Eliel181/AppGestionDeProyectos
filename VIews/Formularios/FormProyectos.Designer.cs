@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
             this.btnFinalizarProyecto = new Guna.UI.WinForms.GunaGradientButton();
@@ -42,6 +44,7 @@
             this.btnNuevo = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaGroupBox2 = new Guna.UI.WinForms.GunaGroupBox();
             this.gunaCircleProgressPorcentaje = new Guna.UI.WinForms.GunaCircleProgressBar();
+            this.lblProcentajeProyecto = new Guna.UI.WinForms.GunaLabel();
             this.btnEditar = new Guna.UI.WinForms.GunaGradientButton();
             this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
             this.btnGuardar = new Guna.UI.WinForms.GunaGradientButton();
@@ -72,7 +75,6 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblProcentajeProyecto = new Guna.UI.WinForms.GunaLabel();
             this.gunaGroupBox1.SuspendLayout();
             this.gunaGroupBox2.SuspendLayout();
             this.gunaCircleProgressPorcentaje.SuspendLayout();
@@ -214,10 +216,10 @@
             this.gunaGroupBox2.BorderSize = 2;
             this.gunaGroupBox2.Controls.Add(this.gunaCircleProgressPorcentaje);
             this.gunaGroupBox2.LineColor = System.Drawing.Color.DeepPink;
-            this.gunaGroupBox2.Location = new System.Drawing.Point(695, 26);
+            this.gunaGroupBox2.Location = new System.Drawing.Point(682, 27);
             this.gunaGroupBox2.Name = "gunaGroupBox2";
             this.gunaGroupBox2.Radius = 10;
-            this.gunaGroupBox2.Size = new System.Drawing.Size(217, 155);
+            this.gunaGroupBox2.Size = new System.Drawing.Size(230, 167);
             this.gunaGroupBox2.TabIndex = 26;
             this.gunaGroupBox2.Text = "Porcentaje de Proyecto";
             this.gunaGroupBox2.TextLocation = new System.Drawing.Point(10, 8);
@@ -237,9 +239,20 @@
             this.gunaCircleProgressPorcentaje.ProgressMaxColor = System.Drawing.Color.Purple;
             this.gunaCircleProgressPorcentaje.ProgressMinColor = System.Drawing.Color.Crimson;
             this.gunaCircleProgressPorcentaje.ProgressOffset = 20;
-            this.gunaCircleProgressPorcentaje.Size = new System.Drawing.Size(130, 130);
+            this.gunaCircleProgressPorcentaje.Size = new System.Drawing.Size(153, 148);
             this.gunaCircleProgressPorcentaje.TabIndex = 0;
             this.gunaCircleProgressPorcentaje.Value = 30;
+            // 
+            // lblProcentajeProyecto
+            // 
+            this.lblProcentajeProyecto.AutoSize = true;
+            this.lblProcentajeProyecto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProcentajeProyecto.ForeColor = System.Drawing.Color.Black;
+            this.lblProcentajeProyecto.Location = new System.Drawing.Point(67, 64);
+            this.lblProcentajeProyecto.Name = "lblProcentajeProyecto";
+            this.lblProcentajeProyecto.Size = new System.Drawing.Size(19, 17);
+            this.lblProcentajeProyecto.TabIndex = 32;
+            this.lblProcentajeProyecto.Text = "%";
             // 
             // btnEditar
             // 
@@ -465,6 +478,7 @@
             this.gunaGroupBox3.BorderColor = System.Drawing.Color.Gainsboro;
             this.gunaGroupBox3.Controls.Add(this.dgvProyectos);
             this.gunaGroupBox3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gunaGroupBox3.ForeColor = System.Drawing.Color.Black;
             this.gunaGroupBox3.LineColor = System.Drawing.Color.DeepPink;
             this.gunaGroupBox3.Location = new System.Drawing.Point(0, 200);
             this.gunaGroupBox3.Name = "gunaGroupBox3";
@@ -478,21 +492,21 @@
             // 
             this.dgvProyectos.AllowUserToAddRows = false;
             this.dgvProyectos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(188)))), ((int)(((byte)(208)))));
-            this.dgvProyectos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(188)))), ((int)(((byte)(208)))));
+            this.dgvProyectos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgvProyectos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProyectos.BackgroundColor = System.Drawing.Color.White;
             this.dgvProyectos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProyectos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvProyectos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProyectos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProyectos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dgvProyectos.ColumnHeadersHeight = 21;
             this.dgvProyectos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -502,14 +516,14 @@
             this.FecFin,
             this.Estado,
             this.Op});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(210)))), ((int)(((byte)(223)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(105)))), ((int)(((byte)(151)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProyectos.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(210)))), ((int)(((byte)(223)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(105)))), ((int)(((byte)(151)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProyectos.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgvProyectos.EnableHeadersVisualStyles = false;
             this.dgvProyectos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(180)))), ((int)(((byte)(203)))));
             this.dgvProyectos.Location = new System.Drawing.Point(0, 30);
@@ -537,7 +551,7 @@
             this.dgvProyectos.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(210)))), ((int)(((byte)(223)))));
             this.dgvProyectos.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvProyectos.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            this.dgvProyectos.ThemeStyle.RowsStyle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvProyectos.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvProyectos.ThemeStyle.RowsStyle.Height = 22;
             this.dgvProyectos.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(105)))), ((int)(((byte)(151)))));
             this.dgvProyectos.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
@@ -591,6 +605,10 @@
             // Op
             // 
             this.Op.DataPropertyName = "op";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.SpringGreen;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.GreenYellow;
+            this.Op.DefaultCellStyle = dataGridViewCellStyle11;
             this.Op.HeaderText = "Op";
             this.Op.Name = "Op";
             this.Op.ReadOnly = true;
@@ -602,6 +620,7 @@
             this.gunaGroupBox4.BorderColor = System.Drawing.Color.Gainsboro;
             this.gunaGroupBox4.Controls.Add(this.dgvListaTareas);
             this.gunaGroupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gunaGroupBox4.ForeColor = System.Drawing.Color.Black;
             this.gunaGroupBox4.LineColor = System.Drawing.Color.DeepPink;
             this.gunaGroupBox4.Location = new System.Drawing.Point(458, 200);
             this.gunaGroupBox4.Name = "gunaGroupBox4";
@@ -615,21 +634,22 @@
             // 
             this.dgvListaTareas.AllowUserToAddRows = false;
             this.dgvListaTareas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(188)))), ((int)(((byte)(208)))));
-            this.dgvListaTareas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(188)))), ((int)(((byte)(208)))));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            this.dgvListaTareas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dgvListaTareas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvListaTareas.BackgroundColor = System.Drawing.Color.White;
             this.dgvListaTareas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvListaTareas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvListaTareas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvListaTareas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(30)))), ((int)(((byte)(99)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvListaTareas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dgvListaTareas.ColumnHeadersHeight = 21;
             this.dgvListaTareas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -639,20 +659,23 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewButtonColumn1});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(210)))), ((int)(((byte)(223)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(105)))), ((int)(((byte)(151)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListaTareas.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(105)))), ((int)(((byte)(151)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListaTareas.DefaultCellStyle = dataGridViewCellStyle15;
             this.dgvListaTareas.EnableHeadersVisualStyles = false;
             this.dgvListaTareas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(180)))), ((int)(((byte)(203)))));
             this.dgvListaTareas.Location = new System.Drawing.Point(6, 30);
             this.dgvListaTareas.Name = "dgvListaTareas";
             this.dgvListaTareas.ReadOnly = true;
             this.dgvListaTareas.RowHeadersVisible = false;
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgvListaTareas.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dgvListaTareas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaTareas.Size = new System.Drawing.Size(452, 202);
             this.dgvListaTareas.TabIndex = 1;
@@ -674,7 +697,7 @@
             this.dgvListaTareas.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(210)))), ((int)(((byte)(223)))));
             this.dgvListaTareas.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvListaTareas.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvListaTareas.ThemeStyle.RowsStyle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.dgvListaTareas.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.White;
             this.dgvListaTareas.ThemeStyle.RowsStyle.Height = 22;
             this.dgvListaTareas.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(105)))), ((int)(((byte)(151)))));
             this.dgvListaTareas.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
@@ -732,17 +755,6 @@
             this.dataGridViewButtonColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewButtonColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // lblProcentajeProyecto
-            // 
-            this.lblProcentajeProyecto.AutoSize = true;
-            this.lblProcentajeProyecto.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProcentajeProyecto.ForeColor = System.Drawing.Color.Black;
-            this.lblProcentajeProyecto.Location = new System.Drawing.Point(56, 57);
-            this.lblProcentajeProyecto.Name = "lblProcentajeProyecto";
-            this.lblProcentajeProyecto.Size = new System.Drawing.Size(19, 17);
-            this.lblProcentajeProyecto.TabIndex = 32;
-            this.lblProcentajeProyecto.Text = "%";
-            // 
             // FormProyectos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -790,13 +802,6 @@
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox3;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox4;
         private Guna.UI.WinForms.GunaDataGridView dgvProyectos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FecInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FecFin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
-        private System.Windows.Forms.DataGridViewButtonColumn Op;
         private Guna.UI.WinForms.GunaDataGridView dgvListaTareas;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -806,5 +811,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewButtonColumn1;
         private Guna.UI.WinForms.GunaLabel lblProcentajeProyecto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FecInicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FecFin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.DataGridViewButtonColumn Op;
     }
 }

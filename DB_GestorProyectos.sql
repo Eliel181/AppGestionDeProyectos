@@ -1,11 +1,6 @@
 CREATE DATABASE DB_GestionProyectos;
 USE DB_GestionProyectos;
 
-/*DROP Table  tareas;
-
-SELECT * FROM usuarios;
-SELECT * FROM empleados;*/
-
 CREATE TABLE Usuarios(
 	IdUsuario INT PRIMARY KEY AUTO_INCREMENT,
     Dni VARCHAR(100) NULL,
@@ -58,9 +53,9 @@ CREATE TABLE Tareas(
     IdEmpleado INT NULL,
     IdUsuario INT NULL,
     IdProyecto INT NULL,
-    FOREIGN KEY (IdEmpleado) REFERENCES Empleados(IdEmpleado),
-    FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario),
-    FOREIGN KEY (IdProyecto) REFERENCES Proyectos(IdProyecto)
+    FOREIGN KEY (IdEmpleado) REFERENCES Empleados(IdEmpleado) ,
+    FOREIGN KEY (IdUsuario) REFERENCES Usuarios(IdUsuario) ,
+    FOREIGN KEY (IdProyecto) REFERENCES Proyectos(IdProyecto) 
 );
 
 /************************ PROCEDIMIENTOS ALMACENADOS ************************/
@@ -145,17 +140,30 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE spListarUsuarios
+CREATE PROCEDURE spListarUsuariosActivos
 (
 	IN cTexto VARCHAR(225)
 )
 BEGIN
-	SELECT u.IdUsuario, CONCAT(u.Apellido," ",u.Nombre) AS Administrador FROM usuarios u                
-	WHERE   u.nombre LIKE CONCAT('%', cTexto , '%');
+	SELECT u.IdUsuario, u.Apellido
+    FROM usuarios u                
+	WHERE   u.nombre LIKE CONCAT('%', cTexto , '%') AND u.Estado != 0;
 END $$
 DELIMITER ;
 
+DELIMITER $$
+CREATE PROCEDURE spListarUsuarioPorTarea
+(
+	IN pIdTarea INT
+)
+BEGIN
+	SELECT u.IdUsuario, CONCAT(u.Apellido," ",u.Nombre) AS Administrador
+FROM usuarios u
+INNER JOIN tareas t ON u.IdUsuario = t.IdUsuario
+WHERE t.IdTarea = pIdTarea;
 
+END $$
+DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE spEliminarUsuario
@@ -199,12 +207,44 @@ BEGIN
     Habilidad=pHabilidad,
     Foto=pFoto
     WHERE IdUsuario = pIdUsuario;
+    
+    if pEstado = 0 THEN
+		call spDesvincularTareaDeUsuario(pIdUsuario);
+    END IF;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE spDesvincularTareaDeUsuario
+(
+	IN pIdUsuario INT
+)
+BEGIN 
+	Update tareas t
+    SET t.IdUsuario = null
+    WHERE t.IdUsuario = pIdUsuario;
+END $$
+DELIMITER ;
+
+
+-- este procedimiento se usara para valiadar si se puede eliminar un usuario
+DELIMITER $$
+CREATE PROCEDURE spCantidadDeTareasPorUsuario
+(
+	IN pIdUsuario INT,
+    OUT totalTareas INT
+)
+BEGIN
+	SELECT COUNT(*) INTO totalTareas 
+    FROM tareas t
+    WHERE t.IdUsuario = pIdUsuario;
+
 END $$
 DELIMITER ;
 
 /****************************************************************************/
 
-/************************ EMPLEADOS ************************/
+/******************************* EMPLEADOS **********************************/
 
 
 DELIMITER $$
@@ -257,15 +297,29 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE spListarEmpleados
+CREATE PROCEDURE spListarEmpleadosActivos
 (
 	IN cTexto VARCHAR(50)
 )
 BEGIN
-	SELECT e.IdEmpleado, CONCAT(e.Apellido," ",e.Nombre) AS Empleado
+	SELECT e.IdEmpleado, Apellido
 FROM empleados e
 
-WHERE e.Nombre LIKE CONCAT('%',cTexto,'%');
+WHERE e.Nombre LIKE CONCAT('%',cTexto,'%') AND e.Estado != 0;
+
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE spListarEmpleadosPorTarea
+(
+	IN pIdTarea INT
+)
+BEGIN
+	SELECT e.IdEmpleado, CONCAT(e.Apellido," ",e.Nombre) AS Empleado
+FROM empleados e
+INNER JOIN tareas t ON e.IdEmpleado = t.IdEmpleado
+WHERE t.IdTarea = pIdTarea;
 
 END $$
 DELIMITER ;
@@ -313,6 +367,23 @@ BEGIN
     Habilidad=pHabilidad,
     Foto=pFoto
     WHERE IdEmpleado = pIdEmpleado;
+    
+    if pEstado = 0 THEN
+		call spDesvincularTareaDeEmpleado(pIdEmpleado);
+    END IF;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE spDesvincularTareaDeEmpleado
+(
+	IN pIdEmpleado INT
+)
+BEGIN 
+	Update tareas t
+    SET t.IdEmpleado = null
+    WHERE t.IdEmpleado = pIdEmpleado;
 END $$
 DELIMITER ;
 
@@ -338,6 +409,38 @@ DELIMITER ;
 
 
 DELIMITER $$
+CREATE PROCEDURE spActualizarProyecto
+(
+	IN pIdProyecto INT,
+    IN pNombre VARCHAR(100),
+	IN pDescripcion VARCHAR(100),
+    IN pFechaInicio DATE,
+    IN pFechaFinalizacion DATE
+)
+BEGIN
+    UPDATE proyectos SET 
+    Nombre=pNombre,
+    Descripcion=pDescripcion,
+    FechaInicio=pFechaInicio,
+    FechaFinalizacion=FechaFinalizacion
+    WHERE IdProyecto = pIdProyecto;
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE spEliminarProyecto
+(
+    IN pIdProyecto INT
+)
+BEGIN
+    DELETE FROM proyectos 
+    WHERE IdProyecto=pIdProyecto; 
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
 CREATE PROCEDURE spListarProyectosOpcion
 (
 	IN cTexto VARCHAR(50)
@@ -353,6 +456,20 @@ BEGIN
 	FROM proyectos p
 
 	WHERE p.Nombre LIKE CONCAT('%',cTexto,'%');
+
+END $$
+DELIMITER ;
+
+DELIMITER $$
+CREATE PROCEDURE spListarProyectoPorTarea
+(
+	IN pIdTarea INT
+)
+BEGIN
+	SELECT p.IdProyecto, p.Nombre AS Proyecto
+FROM proyectos p
+INNER JOIN tareas t ON p.IdProyecto = t.IdProyecto
+WHERE t.IdTarea = pIdTarea;
 
 END $$
 DELIMITER ;
@@ -473,16 +590,11 @@ BEGIN
            t.FechaVencimiento,
            t.Estado,
            t.Prioridad,
-           CONCAT(e.Apellido," ",e.Nombre) AS Empleado,
-           CONCAT(u.Apellido," ",u.Nombre) AS Administrador,
-           p.Nombre AS Proyecto,
            t.IdUsuario,
            t.IdEmpleado,
-           t.IdProyecto
+           t.IdProyecto,
+           "Ver Detalle" AS op
 	FROM tareas t
-    INNER JOIN empleados e ON t.IdEmpleado = e.IdEmpleado
-    INNER JOIN usuarios u ON t.IdUsuario = u.IdUsuario
-    INNER JOIN proyectos p ON t.IdProyecto = p.IdProyecto 
     WHERE t.Nombre LIKE CONCAT('%', cTexto , '%');
 END $$
 DELIMITER ;
@@ -491,6 +603,45 @@ DELIMITER ;
 
 /*SELECT * FROM tareas;*/
 
+
+DELIMITER $$
+CREATE PROCEDURE spEliminarTarea
+(
+    IN pIdTarea INT
+)
+BEGIN
+    DELETE FROM tareas 
+    WHERE IdTarea=pIdTarea; 
+END $$
+DELIMITER ;
+
+
+DELIMITER $$
+CREATE PROCEDURE spActualizarTarea
+(
+	IN pIdTarea INT,
+    IN pNombre VARCHAR(100),
+	IN pDescripcion VARCHAR(100),
+    IN pFechaInicio DATE,
+    IN pFechaVencimiento DATE,
+    IN pPrioridad VARCHAR(100),
+    IN pIdEmpleado INT,
+    IN pIdUsuario INT,
+    IN pIdProyecto INT
+)
+BEGIN
+    UPDATE tareas SET 
+    Nombre=pNombre,
+    Descripcion=pDescripcion,
+    FechaInicio=pFechaInicio,
+    FechaVencimiento=pFechaVencimiento,
+    Prioridad=pPrioridad,
+    IdEmpleado=pIdEmpleado,
+    IdUsuario = pIdUsuario,
+    IdProyecto=pIdProyecto
+    WHERE IdTarea = pIdTarea;
+END $$
+DELIMITER ;
 
 DELIMITER $$
 CREATE PROCEDURE spListarTareasPorProyecto(
@@ -512,7 +663,7 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-CREATE PROCEDURE spTareasPorProyecto
+CREATE PROCEDURE spCantidadDeTareasPorProyecto
 (
 	IN pIdProyecto INT,
     OUT totalTareas INT
@@ -666,4 +817,6 @@ BEGIN
     WHERE p.IdProyecto = NEW.IdProyecto;
 END $$
 DELIMITER ;
+
+
 

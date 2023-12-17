@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
-    
+
     public class TareaController
     {
         TareaDao tareaDao = new TareaDao();
@@ -19,15 +19,41 @@ namespace Controller
             return tareaDao.listarTareas(cTexto);
         }
 
+        public string CrearTarea(Tarea oTa)
+        {
+            return tareaDao.crearTarea(oTa);
+        }
+
+        public string EditarTarea(Tarea oTa)
+        {
+            return tareaDao.editarTarea(oTa);
+        }
+
+        public string EliminarTarea(int idTarea)
+        {
+            return tareaDao.eliminarTarea(idTarea);
+        }
+
         public DataTable ListarTareasPorProyecto(int idProyecto)
         {
             return tareaDao.listarTareasPorProyecto(idProyecto);
         }
 
-        public string CrearTarea(Tarea oTa)
+        public DataTable ListarUsuarioPorTarea(int idTarea)
         {
-            return tareaDao.crearTarea(oTa);
+            return tareaDao.listarUsuarioPorTarea(idTarea);
         }
+
+        public DataTable ListarEmpleadoPorTarea(int idTarea)
+        {
+            return tareaDao.listarEmpleadoPorTarea(idTarea);
+        }
+
+        public DataTable ListarProyectoPorTarea(int idTarea)
+        {
+            return tareaDao.listarProyectoPorTarea(idTarea);
+        }
+
 
         public int ObtenerTareasPorProyecto(int idProyecto)
         {

@@ -24,6 +24,16 @@ namespace Controller
             return proyectoDao.crearProyecto(oPr);
         }
 
+        public string EditarProyecto(Proyecto oPr)
+        {
+            return proyectoDao.editarProyecto(oPr);
+        }
+
+        public string EliminarProyecto(int idProyecto)
+        {
+            return proyectoDao.eliminarProyecto(idProyecto);
+        }
+
         public int ObtenerPorcentajeDeProyecto(int idProyecto)
         {
             return proyectoDao.obtenerPorcentajeDeProyecto(idProyecto);

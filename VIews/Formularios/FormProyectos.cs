@@ -19,7 +19,7 @@ namespace VIews.Formularios
         TareaController tareaController = new TareaController();
 
         //esta variable sera utilizada para almacenar el id de un proeyecto
-        //que quieramos eliminar
+        //que quieramos finalizar
         int idProyectoFinalizar = 0;
 
         public FormProyectos()
@@ -89,19 +89,106 @@ namespace VIews.Formularios
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (this.txtIdProyecto.Text != "")
+                {
+                    string Rpta = "";
+                    Proyecto pro = new Proyecto();
+                    pro.IdProyecto = int.Parse(this.txtIdProyecto.Text);
+                    pro.Nombre = this.txtNombre.Text;
+                    pro.Descripcion = this.txtDescripcion.Text;
+                    pro.FechaInicio = this.dtpFechaInicio.Value;
+                    pro.FechaFinalizacion = this.dtpFechaFinalizacion.Value;
+                    
 
+                    Rpta = proyectoController.EditarProyecto(pro);
+
+                    if (Rpta.Equals("OK"))
+                    {
+                        MensajeBox m = new MensajeBox("Actualizo", "El Proyecto: " + pro.Nombre );
+                        DialogResult dg = m.ShowDialog();
+
+                        //cargarLista();
+                        limpiarCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Rpta,
+                                        "Aviso del Sistema",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                    }
+                    cargarLista();
+
+                }
+                else
+                {
+                    MessageBox.Show("Debe Seleccionar un Proyecto", "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was a problem saving the file." +
+                    "Check the file permissions.");
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                
+                if (this.txtIdProyecto.Text != "")
+                {
+                    int idPro = int.Parse(this.txtIdProyecto.Text);
+                    string Rpta;
 
+                    if(tareaController.ObtenerTareasPorProyecto(idPro) == 0)
+                    {
+                        Rpta = proyectoController.EliminarProyecto(idPro);
+                        if (Rpta.Equals("OK"))
+                        {
+
+                            MensajeBox m = new MensajeBox("Eliminó ", "El Proyecto: " + this.txtNombre.Text);
+
+                            DialogResult dg = m.ShowDialog();
+
+                            limpiarCampos();
+                        }
+                        else
+                        {
+                            MessageBox.Show(Rpta,
+                                            "Aviso del Sistema",
+                                            MessageBoxButtons.OK,
+                                            MessageBoxIcon.Error);
+                        }
+                        cargarLista();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Este proyecto contine Tareas", "No se puede borrar este proyecto");
+                    }
+                    
+
+                }
+                else
+                {
+                    MessageBox.Show("Debe Seleccionar un Proyecto", "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was a problem saving the file." +
+                    "Check the file permissions.");
+            }
         }
 
         private void dgvProyectos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                //caundo haga click en una columna que no sea la de opEliminar
+                //caundo haga click en una columna que no sea la de op
                 if (e.RowIndex < 0 || e.ColumnIndex != dgvProyectos.Columns["Op"].Index)
                 {
                     return;
@@ -110,6 +197,7 @@ namespace VIews.Formularios
                 {
                     var idProyecto = int.Parse(this.dgvProyectos.CurrentRow.Cells[0].Value.ToString());
                     this.dgvListaTareas.DataSource = tareaController.ListarTareasPorProyecto(idProyecto);
+                    mostrarPorcentaje(idProyecto);
                 }
             }
             catch (Exception ex)
@@ -185,6 +273,7 @@ namespace VIews.Formularios
                         DialogResult dg = m.ShowDialog();
 
                         cargarLista();
+                        limpiarCampos();
                     }
                     else
                     {

@@ -16,7 +16,8 @@ namespace VIews.Formularios
     public partial class FormTareas : Form
     {
         TareaController tareaController = new TareaController();
-        int idProyect = 0;
+        
+
 
 
         public FormTareas()
@@ -43,17 +44,17 @@ namespace VIews.Formularios
         public void cargarListaEmpleados()
         {
             EmpleadoController controller = new EmpleadoController();
-            this.cmbEmpleado.DataSource = controller.ListarEmpleados("%");
+            this.cmbEmpleado.DataSource = controller.ListarEmpleadosActivos("%");
             this.cmbEmpleado.ValueMember = "IdEmpleado";//el valor que se selecciona
-            this.cmbEmpleado.DisplayMember = "Empleado";//el valor que se mostrara en la vista
+            this.cmbEmpleado.DisplayMember = "Apellido";//el valor que se mostrara en la vista
         }
 
         public void cargarListaUsuarios()
         {
             UsuarioController controller = new UsuarioController();
-            this.cmbAdministrador.DataSource = controller.ListarUsuarios("%");
+            this.cmbAdministrador.DataSource = controller.ListarUsuariosActivos("%");
             this.cmbAdministrador.ValueMember = "IdUsuario";//el valor que se selecciona
-            this.cmbAdministrador.DisplayMember = "Administrador";//el valor que se mostrara en la vista
+            this.cmbAdministrador.DisplayMember = "Apellido";//el valor que se mostrara en la vista
         }
 
         public void cargarLista()
@@ -63,6 +64,15 @@ namespace VIews.Formularios
 
         public void limpiarCampos()
         {
+            this.txtIdTarea.Text = "";
+            this.txtNombre.Text = "";
+            this.txtDescripcion.Text = "";
+            this.dtpFechaInicio.Text = "";
+            this.dtpFechaVencimiento.Text = "";
+            this.cmbPrioridad.SelectedIndex = -1; 
+            this.cmbEmpleado.SelectedIndex = -1;
+            this.cmbAdministrador.SelectedIndex = -1;
+            this.cmbProyecto.SelectedIndex = -1;
 
         }
 
@@ -113,17 +123,91 @@ namespace VIews.Formularios
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-
+            limpiarCampos();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (this.txtIdTarea.Text != "")
+                {
+                    string Rpta = "";
+                    Tarea tra = new Tarea();
+                    tra.IdTarea = int.Parse(this.txtIdTarea.Text);
+                    tra.Nombre = this.txtNombre.Text;
+                    tra.Descripcion = this.txtDescripcion.Text;
+                    tra.FechaInicio = this.dtpFechaInicio.Value;
+                    tra.FechaVencimiento = this.dtpFechaVencimiento.Value;
+                    tra.Prioridad = this.cmbPrioridad.Text;
+                    tra.IdEmpleado = int.Parse(this.cmbEmpleado.SelectedValue.ToString());
+                    tra.IdUsuario = int.Parse(this.cmbAdministrador.SelectedValue.ToString());
+                    tra.IdProyecto = int.Parse(this.cmbProyecto.SelectedValue.ToString());
 
+
+                    Rpta = tareaController.EditarTarea(tra);
+
+                    if (Rpta.Equals("OK"))
+                    {
+                        MensajeBox m = new MensajeBox("Actualizo", "El Proyecto: " + tra.Nombre);
+                        DialogResult dg = m.ShowDialog();
+
+                        limpiarCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Rpta,
+                                        "Aviso del Sistema",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                    }
+                    cargarLista();
+
+                }
+                else
+                {
+                    MessageBox.Show("Debe Seleccionar una Tarea", "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("There was a problem saving the file." +
+                    "Check the file permissions.");
+            }
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (this.txtIdTarea.Text != "")
+                {
+                    var rta = tareaController.EliminarTarea(int.Parse(this.txtIdTarea.Text));
+                    if (rta.Equals("OK"))
+                    {
+                        MensajeBox m = new MensajeBox("Eliminó", "La Tarea: " + this.txtNombre.Text );
+                        DialogResult dg = m.ShowDialog();
+                        limpiarCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show(rta,
+                                        "Aviso del Sistema",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+                    }
+                    cargarLista();
+                }
+                else
+                {
+                    MessageBox.Show("Debe Seleccionar Una Tarea para eliminar", "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar registro: " + ex.StackTrace,
+                    "Error");
+            }
         }
 
         private void dgvTareas_DoubleClick(object sender, EventArgs e)
@@ -132,7 +216,7 @@ namespace VIews.Formularios
             {
                 if (this.dgvTareas.CurrentRow != null)
                 {
-                   
+                    int idTarea = int.Parse(this.dgvTareas.CurrentRow.Cells[0].Value.ToString());
                     this.txtIdTarea.Text = this.dgvTareas.CurrentRow.Cells[0].Value.ToString();
                     this.txtNombre.Text = this.dgvTareas.CurrentRow.Cells[1].Value.ToString();
                     this.txtDescripcion.Text = this.dgvTareas.CurrentRow.Cells[2].Value.ToString();
@@ -140,13 +224,16 @@ namespace VIews.Formularios
                     this.dtpFechaVencimiento.Value = (DateTime)this.dgvTareas.CurrentRow.Cells[4].Value;
                     //this.lblNroTareas.Text = this.dgvTareas.CurrentRow.Cells[5].Value.ToString();
                     this.cmbPrioridad.Text = this.dgvTareas.CurrentRow.Cells[6].Value.ToString();
+                    
+
+                    this.dgvUsuario.DataSource = tareaController.ListarUsuarioPorTarea(idTarea);
+                    this.dgvEmpleado.DataSource = tareaController.ListarEmpleadoPorTarea(idTarea);
+                    this.dgvProyecto.DataSource = tareaController.ListarProyectoPorTarea(idTarea);
+
                     this.cmbEmpleado.Text = this.dgvTareas.CurrentRow.Cells[7].Value.ToString();
                     this.cmbAdministrador.Text = this.dgvTareas.CurrentRow.Cells[8].Value.ToString();
-                    this.cmbProyecto.SelectedValue = this.dgvTareas.CurrentRow.Cells[12].Value.ToString();
-                    //this.lblNroTareas.Text = tareaController.ObtenerTareasPorProyecto(int.Parse(this.dgvTareas.Curr;
+                    this.cmbProyecto.SelectedValue = this.dgvTareas.CurrentRow.Cells[9].Value.ToString();
 
-                    int nroTareas = tareaController.ObtenerTareasPorProyecto(int.Parse(this.dgvTareas.CurrentRow.Cells[12].Value.ToString()));
-                    this.lblNroTareas.Text = Convert.ToString(nroTareas);
                 }
             }
             catch (Exception ex)
@@ -156,17 +243,14 @@ namespace VIews.Formularios
             }
         }
 
-        private void cmbProyecto_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbProyecto_SelectionChangeCommitted(object sender, EventArgs e)
         {
-
             try
             {
-               
                 if (this.cmbProyecto.SelectedValue.ToString() != null)
                 {
-
-                    idProyect = int.Parse(cmbProyecto.SelectedValue.ToString());
-                    int numTareas = tareaController.ObtenerTareasPorProyecto(idProyect);
+                    int idProyecto = int.Parse(cmbProyecto.SelectedValue.ToString());
+                    int numTareas = tareaController.ObtenerTareasPorProyecto(idProyecto);
                     this.lblNroTareas.Text = Convert.ToString(numTareas);
 
                     if (numTareas == 10)
@@ -185,13 +269,37 @@ namespace VIews.Formularios
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void gunaGroupBox4_Click(object sender, EventArgs e)
+        {
 
         }
 
-        private void cmbProyecto_SelectedValueChanged(object sender, EventArgs e)
+        private void dgvTareas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //idProyect = 1;
-            
+            try
+            {
+                //caundo haga click en una columna que no sea la de op
+                if (e.RowIndex < 0 || e.ColumnIndex != dgvTareas.Columns["op"].Index)
+                {
+                    return;
+                }
+                else
+                {
+                    var idTarea = int.Parse(this.dgvTareas.CurrentRow.Cells[0].Value.ToString());
+                    
+                    this.dgvUsuario.DataSource = tareaController.ListarUsuarioPorTarea(idTarea);
+                    this.dgvEmpleado.DataSource = tareaController.ListarEmpleadoPorTarea(idTarea);
+                    this.dgvProyecto.DataSource = tareaController.ListarProyectoPorTarea(idTarea);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.StackTrace);
+            }
         }
     }
 }

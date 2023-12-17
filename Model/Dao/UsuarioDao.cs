@@ -82,7 +82,7 @@ namespace Model.Dao
             { if (SqlCon.State == ConnectionState.Open) SqlCon.Close(); }
         }
 
-        public DataTable listarUsuarios(string cTexto)
+        public DataTable listarUsuariosActivos(string cTexto)
         {
             MySqlDataReader Resultado;
             DataTable Tabla = new DataTable();
@@ -90,7 +90,7 @@ namespace Model.Dao
             try
             {
                 SqlCon = Conexion.getInstancia().CrearConexion();
-                string sql_tarea = "spListarUsuarios";
+                string sql_tarea = "spListarUsuariosActivos";
                 MySqlCommand Comando = new MySqlCommand(sql_tarea, SqlCon);
                 Comando.CommandTimeout = 60;
                 Comando.CommandType = CommandType.StoredProcedure;
