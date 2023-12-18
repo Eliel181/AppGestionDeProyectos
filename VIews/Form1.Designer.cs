@@ -237,6 +237,7 @@
             this.btnLogout.Radius = 10;
             this.btnLogout.Size = new System.Drawing.Size(40, 35);
             this.btnLogout.TabIndex = 7;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnEmpleados
             // 

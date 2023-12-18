@@ -248,25 +248,34 @@ namespace VIews.Formularios
                 else
                 {
                     var idUsuario = int.Parse(this.dgvUsuarios.CurrentRow.Cells[0].Value.ToString());
-                    DialogResult res = MessageBox.Show("Estas Seguro de querer Eliminar", "Confirmar Eliminar", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    String Rpta = "";
-
-                    if (res == DialogResult.OK)
+                    int nroTareas = usuarioController.ObtenerTotalTareasPorUsuario(idUsuario);
+                    
+                    if(nroTareas == 0)
                     {
-                        Rpta = usuarioController.EliminarUsuario(idUsuario);
-                        if (Rpta.Equals("OK"))
-                        {
-                            
-                            MensajeBox m = new MensajeBox("Elimino", "El Usuario " + this.dgvUsuarios.CurrentRow.Cells[2].Value.ToString());
-                            DialogResult dg = m.ShowDialog();
+                        DialogResult res = MessageBox.Show("Estas Seguro de querer Eliminar", "Confirmar Eliminar", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        String Rpta = "";
 
-                            limpiarCampos();
-                            cargarLista();
-                        }
-                        else
+                        if (res == DialogResult.OK)
                         {
-                            MessageBox.Show(Rpta, "Aviso de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Rpta = usuarioController.EliminarUsuario(idUsuario);
+                            if (Rpta.Equals("OK"))
+                            {
+
+                                MensajeBox m = new MensajeBox("Elimino", "El Usuario " + this.dgvUsuarios.CurrentRow.Cells[2].Value.ToString());
+                                DialogResult dg = m.ShowDialog();
+
+                                limpiarCampos();
+                                cargarLista();
+                            }
+                            else
+                            {
+                                MessageBox.Show(Rpta, "Aviso de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El usuario tiene tareas", "No se puede borrar");
                     }
                 }
             }

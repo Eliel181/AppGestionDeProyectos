@@ -32,7 +32,7 @@
             this.gunaElipse1 = new Guna.UI.WinForms.GunaElipse(this.components);
             this.btnAceptar = new Guna.UI.WinForms.GunaGradientButton();
             this.lblMensaje = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblIcono = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gunaElipse1
@@ -80,17 +80,17 @@
             this.lblMensaje.Text = "Mensaje";
             this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // lblIcono
             // 
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Lime;
-            this.label1.Location = new System.Drawing.Point(1, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(487, 44);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "✔";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblIcono.BackColor = System.Drawing.Color.Black;
+            this.lblIcono.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIcono.ForeColor = System.Drawing.Color.Lime;
+            this.lblIcono.Location = new System.Drawing.Point(1, 37);
+            this.lblIcono.Name = "lblIcono";
+            this.lblIcono.Size = new System.Drawing.Size(487, 44);
+            this.lblIcono.TabIndex = 2;
+            this.lblIcono.Text = "✔";
+            this.lblIcono.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MensajeBox
             // 
@@ -98,7 +98,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(491, 282);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblIcono);
             this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.btnAceptar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -114,6 +114,6 @@
         private Guna.UI.WinForms.GunaElipse gunaElipse1;
         private System.Windows.Forms.Label lblMensaje;
         private Guna.UI.WinForms.GunaGradientButton btnAceptar;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblIcono;
     }
 }

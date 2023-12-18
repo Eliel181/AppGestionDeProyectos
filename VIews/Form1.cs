@@ -107,5 +107,10 @@ namespace VIews
             ActivarBoton(sender);
             AbrirFormulario(new FormUsuarios());
         }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

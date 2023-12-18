@@ -25,6 +25,7 @@ namespace VIews.Formularios
             cargarDatosDeEmpleadoLogueado();
             cargarLista();
             deshabilitarBotones();
+            mostrarNotificacion();
         }
 
         public void cargarLista()
@@ -44,6 +45,13 @@ namespace VIews.Formularios
             this.lblProyecto.Text = ".....";
 
             deshabilitarBotones();
+        }
+
+        public void mostrarNotificacion()
+        {
+            ntfNotificacion.BalloonTipTitle = "Bienvenido" + EmpleadoCache.Nombre + " " + EmpleadoCache.Apellido;
+            ntfNotificacion.BalloonTipText = "Falta aui";
+            ntfNotificacion.ShowBalloonTip(1000,"Importan notice", "muy Importante",ToolTipIcon.Info);
         }
 
         public void deshabilitarBotones()
@@ -215,5 +223,9 @@ namespace VIews.Formularios
                 MessageBox.Show(ex.StackTrace);
             }
         }
+
+ 
+
+
     }
 }

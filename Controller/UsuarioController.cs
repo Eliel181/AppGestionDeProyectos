@@ -43,5 +43,10 @@ namespace Model
         {
             return usuarioDao.editarUsuario(oUs);
         }
+
+        public int ObtenerTotalTareasPorUsuario(int idUsuario)
+        {
+            return usuarioDao.obtenerTotalTareasPorUsuario(idUsuario);
+        }
     }
 }

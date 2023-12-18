@@ -39,8 +39,6 @@ CREATE TABLE Proyectos(
     Estado VARCHAR(100) NULL
 );
 
-/*ALTER Table proyectos DROP FOREIGN KEY proyectos_ibfk_1;
-ALTER Table proyectos DROP column IdUsuario;*/
 
 CREATE TABLE Tareas(
 	IdTarea INT PRIMARY KEY AUTO_INCREMENT,
@@ -387,6 +385,21 @@ BEGIN
 END $$
 DELIMITER ;
 
+
+-- este procedimiento se usara para valiadar si se puede eliminar un usuario
+DELIMITER $$
+CREATE PROCEDURE spCantidadDeTareasPorEmpleado
+(
+	IN pIdEmpleado INT,
+    OUT totalTareas INT
+)
+BEGIN
+	SELECT COUNT(*) INTO totalTareas 
+    FROM tareas t
+    WHERE t.IdEmpleado = pIdEmpleado;
+
+END $$
+DELIMITER ;
 
 /****************************************************************************/
 
@@ -781,14 +794,6 @@ BEGIN
 END $$
 DELIMITER ;
 
-SELECT * FROM tareas 
-WHERE IdEmpleado = 3
-ORDER BY FechaVencimiento;
-
-SELECT * FROM tareas 
-WHERE IdEmpleado = 2
-ORDER BY Prioridad DESC;
-
 
 DELIMITER $$
 CREATE PROCEDURE spActualizarEstadoDeTarea
@@ -817,6 +822,4 @@ BEGIN
     WHERE p.IdProyecto = NEW.IdProyecto;
 END $$
 DELIMITER ;
-
-
 

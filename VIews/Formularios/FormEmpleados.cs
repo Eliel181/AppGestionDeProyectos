@@ -247,25 +247,35 @@ namespace VIews.Formularios
                 else
                 {
                     var idEmpleado = int.Parse(this.dgvEmpleados.CurrentRow.Cells[0].Value.ToString());
-                    DialogResult res = MessageBox.Show("Estas Seguro de querer Eliminar", "Confirmar Eliminar", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    String Rpta = "";
+                    int nroTareas = empleadoController.ObtenerTotalTareasPorEmpleado(idEmpleado);
+                    
 
-                    if (res == DialogResult.OK)
+                    if(nroTareas == 0)
                     {
-                        Rpta = empleadoController.EliminarEmpleado(idEmpleado);
-                        if (Rpta.Equals("OK"))
-                        {
+                        DialogResult res = MessageBox.Show("Estas Seguro de querer Eliminar", "Confirmar Eliminar", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        String Rpta = "";
 
-                            MensajeBox m = new MensajeBox("Elimino", "El Empleado " + this.dgvEmpleados.CurrentRow.Cells[2].Value.ToString());
-                            DialogResult dg = m.ShowDialog();
-
-                            limpiarCampos();
-                            cargarLista();
-                        }
-                        else
+                        if (res == DialogResult.OK)
                         {
-                            MessageBox.Show(Rpta, "Aviso de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Rpta = empleadoController.EliminarEmpleado(idEmpleado);
+                            if (Rpta.Equals("OK"))
+                            {
+
+                                MensajeBox m = new MensajeBox("Elimino", "El Empleado " + this.dgvEmpleados.CurrentRow.Cells[2].Value.ToString());
+                                DialogResult dg = m.ShowDialog();
+
+                                limpiarCampos();
+                                cargarLista();
+                            }
+                            else
+                            {
+                                MessageBox.Show(Rpta, "Aviso de Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El empleado tiene tareas", "No se puede borrar");
                     }
                 }
             }

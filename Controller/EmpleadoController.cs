@@ -43,5 +43,10 @@ namespace Controller
         {
             return empleadoDao.editarEmpleado(oEm);
         }
+
+        public int ObtenerTotalTareasPorEmpleado(int idEmpleado)
+        {
+            return empleadoDao.obtenerTotalTareasPorEmpleado(idEmpleado);
+        }
     }
 }
